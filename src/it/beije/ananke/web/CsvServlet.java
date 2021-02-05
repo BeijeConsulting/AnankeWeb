@@ -21,7 +21,8 @@ public class CsvServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getRequestURI() + " doGet");
 		
-		String csv = "/temp/rubrica.txt";
+		String csv = "C:/Users/Padawan06/Desktop/rubrica.csv";
+		
 		
 		FileReader fileReader = new FileReader(csv);
 		//response.setContentType("text/csv");

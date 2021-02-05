@@ -6,10 +6,26 @@
 		</style>
 	</head>
 	<body>
-		<h3>Inserisci i dati</h3>
-		<form action="./servlet" method="post">
+		<h3>Inserisci i dati del nuovo contatto:</h3>
+		<form action="./ServletNuovoContatto" method="post">
 			COGNOME&nbsp;<input type="text" name="cognome" value="" placeholder="Bianchi"/><br/>
  			NOME&nbsp;<input type="text" name="nome" value="" placeholder="Marco"/><br>
+ 			NUMERO DI TELEFONO&nbsp;<input type="text" name="numTel" value="" placeholder="Marco"/><br>
+ 			EMAIL&nbsp;<input type="text" name="mail" value="" placeholder="Marco"/><br>
+			<br><input type="submit" value="INVIO"/>
+		</form>
+		<br>
+		<br>
+		<h3>Inserisci parola chiave del contatto da cercare:</h3>
+		<form action="./ServletCercaContatto" method="post">
+			PAROLA CHIAVE&nbsp;<input type="text" name="parolaChiave" value="" placeholder="Bianchi"/><br/>
+			<br><input type="submit" value="INVIO"/>
+		</form>
+		<br>
+		<br>
+		<h3>Inserisci parola chiave del contatto da eliminare:</h3>
+		<form action="./ServletCercaContatto" method="post">
+			PAROLA CHIAVE&nbsp;<input type="text" name="parolaChiave" value="" placeholder="Bianchi"/><br/>
 			<br><input type="submit" value="INVIO"/>
 		</form>
 	</body>
