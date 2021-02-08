@@ -9,24 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class TestServlet
- */
+import it.beije.ananke.rubrica.Contact;
+import it.beije.ananke.rubrica.rubricajpa.Rubrica;
+import it.beije.ananke.rubrica.rubricajpa.jpamanager.JPAManager;
+
 @WebServlet("/servlet")
-public class TestServlet extends HttpServlet {
+public class InsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TestServlet() {
+
+    public InsertServlet() {
         super();
         System.out.println("Costruttore TestServlet...");
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getRequestURL() + " doGet");
 		
@@ -39,26 +34,17 @@ public class TestServlet extends HttpServlet {
 		response.getWriter().append(html);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getRequestURL() + " doPost");
+		Contact contact = new Contact();
+		contact.setFirstName(request.getParameter("nome"));
+		contact.setLastName(request.getParameter("cognome"));
+		contact.setPhoneNumber(request.getParameter("numero"));
+		contact.setEmail(request.getParameter("email"));
+		JPAManager.insert(contact);
 		
-		String cognome = request.getParameter("cognome");
-		String nome = request.getParameter("nome");
-		System.out.println("cognome = " + cognome);
-		System.out.println("nome = " + nome);
-
-		String html = "<html><head><title>Servlet di prova</title>" + 
-				"</head><body>"
-				+ "<p>COGNOME : " + cognome + "<br>"
-				+ "NOME : " + nome + "</p>"
-				+ "</body></html>";
-
-		response.getWriter().append(html);
-		
-		//response.sendRedirect("index.html");
+	
+		response.sendRedirect("InitialPage.html");
 	}
 
 }

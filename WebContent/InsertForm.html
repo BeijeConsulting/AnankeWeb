@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<title>FORM POST</title>
+		<style>
+			.button {
+	 			border: none;
+	  			color: black;
+	  			padding: 8px 30px;
+	  			text-align: center;
+	  			text-decoration: none;
+	  			display: inline-block;
+	  			font-size: 16px;
+	  			margin: 4px 2px;
+	  			cursor: pointer;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div style="text-align:center;">
+			<h3>Inserisci i dati</h3>
+			<form action="./servlet" method="post">
+				<label for="nome">First Name</label>
+				<input type="text" name="nome" value="" placeholder="Marco"/><br>
+				<label for="cognome">Last Name</label>
+				<input type="text" name="cognome" value="" placeholder="Bianchi"/><br/>
+	 			<label for="numero">Phone Number</label>
+	 			<input type="text" name="numero" value="" placeholder="339..."/><br>
+	 			<label for="email">Email</label>
+	 			<input type="text" name="email" value="" placeholder="Marco.bianchi@gmail.com"/><br>
+				<br><input type="submit" value="INVIO"/>
+			</form>
+		</div>
+	</body>
+</html>
