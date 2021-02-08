@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inserimento Contatto</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<h1>Compila in basso ed inserisci un contatto</h1>
+
+<form action="./insertServlet" method="post">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" placeholder="Mario"><br>
+  <label for="surname">Surname:</label><br>
+  <input type="text" id="surname" name="surname" placeholder="Rossi"><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" placeholder="mariorossi@email.it"><br>
+  <label for="telephone">Telephone:</label><br>
+  <input type="tel" id="telephone" name="telephone" placeholder="3396745367">
+  <p><input type="submit" value="Inserisci"></p>
+</form>
+
+</div>
+</body>
+</html>

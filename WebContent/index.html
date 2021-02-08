@@ -2,9 +2,25 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>iRubrica</title>
+<link href="style.css" rel="stylesheet">
 </head>
 <body>
-CIAO ANANKE! :-)
+<div class="container">
+<h1>Benvenuto nella rubrica</h1>
+
+<form action="./rubricaServlet" method="post">
+<p><label>Scegli cosa fare:</label></p>
+  <input type="radio" id="insert" name="service" value="1">
+  <label for="insert">1)Inserisci Contatto</label><br>
+  <input type="radio" id="delete" name="service" value="2">
+  <label for="delete">2)Elimina Contatto</label><br>
+  <input type="radio" id="export" name="service" value="3">
+  <label for="export">3)Esporta File CSV/XML</label><br>
+  <input type="radio" id="view" name="service" value="4">
+  <label for="view">4)Visualizza Database</label>
+ <p><input type="submit" value="Scegli"></p>
+</form>
+</div>
 </body>
 </html>
