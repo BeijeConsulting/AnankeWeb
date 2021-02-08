@@ -24,7 +24,7 @@ public class CsvServlet extends HttpServlet {
 		String csv = "/temp/rubrica.txt";
 		
 		FileReader fileReader = new FileReader(csv);
-		//response.setContentType("text/csv");
+		response.setContentType("text/csv");
 		while (fileReader.ready()) {
 			response.getWriter().append((char)fileReader.read());
 		}

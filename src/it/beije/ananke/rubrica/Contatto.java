@@ -17,9 +17,6 @@ public class Contatto {
 	@Column(name="id")
 	private int id;
 
-//	@Column(name="first_name")
-//	private String firstName;
-
 	@Column(name="name")
 	private String name;
 
@@ -32,6 +29,18 @@ public class Contatto {
 	@Column(name="email")
 	private String email;
 	
+	
+	public Contatto() {
+		
+	}
+	
+	public Contatto(String name, String surname, String telephone, String email) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.telephone = telephone;
+		this.email = email;
+	}
 	
 	public int getId() {
 		return id;
