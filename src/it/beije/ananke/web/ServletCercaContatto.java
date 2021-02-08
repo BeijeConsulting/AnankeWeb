@@ -36,6 +36,7 @@ public class ServletCercaContatto extends HttpServlet {
 		list = RubricaJPA.cercaContatti(parolaChiave);
 		
 		if(list == null) {
+			
 			String htmlFAIL = "<html><head><title>Servlet di prova</title>" + 
 					"</head><body>"
 					+ "<p>" 
@@ -46,10 +47,9 @@ public class ServletCercaContatto extends HttpServlet {
 
 		}else {
 			
-			for(Contatto c : list) {
-				response.getWriter().append(c.getNome() + " ; " + c.getCognome() + " ; "
-												+ c.getNumeroTel() + " ; " + c.getMail() + "\n");
-			}
+			String htmlOK = HTMLmanager.pagHtmlVisualizza(list);
+			response.getWriter().append(htmlOK);
+			
 			
 		}
 	}

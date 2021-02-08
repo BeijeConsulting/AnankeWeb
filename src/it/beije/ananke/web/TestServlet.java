@@ -50,7 +50,7 @@ public class TestServlet extends HttpServlet {
 		System.out.println("cognome = " + cognome);
 		System.out.println("nome = " + nome);
 
-		String html = "<html><head><title>Servlet di prova</title>" + 
+		String html = "<html><head><title> </title>" + 
 				"</head><body>"
 				+ "<p>COGNOME : " + cognome + "<br>"
 				+ "NOME : " + nome + "</p>"
