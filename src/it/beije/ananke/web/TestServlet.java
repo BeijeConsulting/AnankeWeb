@@ -30,11 +30,10 @@ public class TestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getRequestURL() + " doGet");
 		
-		LocalDateTime now = LocalDateTime.now();
 		
 		String html = "<html><head><title>Servlet di prova</title>" + 
 				"</head><body><h1>CIAO ANANKE :-)</h1>"
-				+ "<p>Data esatta: " + now + "</p></body></html>";
+				+ "</body></html>";
 		
 		response.getWriter().append(html);
 	}
