@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body{
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    height: 100%;
+}
+#head{
+background-color: black;
+color:rgb(255, 255, 255);
+width: 100%;
+height: 10%;
+margin: 0;
+    padding: 0;
+    font-family: 'Sacramento', cursive;
+    vertical-align: middle;
+    font-size: 25px;
+    text-align: center;
+
+}
+#conteiner{
+    width: 100%;
+    height: 100%;
+}
+.divlat{
+width: 5%;
+height:100% ;
+float: left;
+background-color: black;
+margin: 0;
+text-align: center;
+}
+.input {
+    padding: 5px;
+    font-size: 14px;
+    border-width: 1px;
+    border-color: #000000;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: solid;
+    border-radius: 17px;
+    box-shadow: 0px 0px 17px rgba(49,94,151,.75);
+    text-shadow: 4px 8px 1px rgba(13,160,0,.0);
+}
+.input:focus {
+    outline:none;
+}
+label{
+    font-family: 'Indie Flower', cursive;
+font-size: 26px;
+}
+.button {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:42px;
+	border:1px solid #29668f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:14px 32px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #3d768a;
+
+}
+.button:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.button:active {
+	position:relative;
+    top:1px;
+    background-color:#32d102;
+}
+
+
+table {
+    border: 3px solid #000000;
+    width: 70%;
+    height: 50%;
+    overflow-y: scroll;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  table td, table th {
+    border: 1px solid #000000;
+    padding: 5px 4px;
+  }
+  table tbody td {
+    font-size: 13px;
+  }
+  table thead {
+    background: #CFCFCF;
+    background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+    background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+    background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+    border-bottom: 3px solid #000000;
+  }
+  table thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+  }
+  table tfoot {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    border-top: 3px solid #000000;
+  }
+  table tfoot td {
+    font-size: 14px;
+  }
