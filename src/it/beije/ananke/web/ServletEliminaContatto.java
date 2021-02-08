@@ -33,6 +33,7 @@ public class ServletEliminaContatto extends HttpServlet {
 		List<Contatto> list = new ArrayList<>();
 		
 		list = RubricaJPA.cercaContatti(parolaChiave);
+		
 	}
 
 }

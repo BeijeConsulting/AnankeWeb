@@ -11,12 +11,11 @@ public class HTMLmanager {
 				"</head><body>";
 		
 		for(Contatto c : list)
-			html += "<p>" + " NOME : " + c.getCognome() +
+			html += "<p>" + " NOME : " + c.getNome() +
 							" COGNOME : " + c.getCognome() + 
 							" NUMERO DI TELEFONO : " + c.getNumeroTel() +
 							" EMAIL : " + c.getMail()
-										+ "</p>"
-										+ "<br>";
+										+ "</p>";
 			
 			
 					html +=   "</body></html>";

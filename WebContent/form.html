@@ -6,26 +6,27 @@
 		</style>
 	</head>
 	<body>
+
 		<h3>Inserisci i dati del nuovo contatto:</h3>
 		<form action="./ServletNuovoContatto" method="post">
-			COGNOME&nbsp;<input type="text" name="cognome" value="" placeholder="Bianchi"/><br/>
- 			NOME&nbsp;<input type="text" name="nome" value="" placeholder="Marco"/><br>
- 			NUMERO DI TELEFONO&nbsp;<input type="text" name="numTel" value="" placeholder="Marco"/><br>
- 			EMAIL&nbsp;<input type="text" name="mail" value="" placeholder="Marco"/><br>
+			
+ 			NOME&nbsp;<input type="text" name="nome" value="" placeholder="Nome"/><br>
+ 			COGNOME&nbsp;<input type="text" name="cognome" value="" placeholder="Cognome"/><br/>
+ 			NUMERO DI TELEFONO&nbsp;<input type="text" name="numTel" value="" placeholder="Numero di telefono"/><br>
+ 			EMAIL&nbsp;<input type="text" name="mail" value="" placeholder="email"/><br>
 			<br><input type="submit" value="INVIO"/>
 		</form>
 		<br>
-		<br>
 		<h3>Inserisci parola chiave del contatto da cercare:</h3>
 		<form action="./ServletCercaContatto" method="post">
-			PAROLA CHIAVE&nbsp;<input type="text" name="parolaChiave" value="" placeholder="Bianchi"/><br/>
+			PAROLA CHIAVE&nbsp;<input type="text" name="parolaChiave" value="" placeholder=""/><br/>
 			<br><input type="submit" value="INVIO"/>
 		</form>
 		<br>
 		<br>
 		<h3>Inserisci parola chiave del contatto da eliminare:</h3>
-		<form action="./ServletCercaContatto" method="post">
-			PAROLA CHIAVE&nbsp;<input type="text" name="parolaChiave" value="" placeholder="Bianchi"/><br/>
+		<form action="./EliminaContatto.jsp" method="post">
+			PAROLA CHIAVE&nbsp;<input type="text" name="parolaChiave" value="" placeholder=""/><br/>
 			<br><input type="submit" value="INVIO"/>
 		</form>
 	</body>
