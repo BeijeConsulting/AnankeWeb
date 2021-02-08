@@ -95,6 +95,30 @@ public class RubricaJPA {
 
 	}
 	
+	public static void contattoDaModificare(int id, String nome, String cognome, String numTel, String mail) {
+		List<Contatto> list = new ArrayList<>();
+		EntityManager entityManager = JPAEntityManager.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		System.out.println("ID CHE STO ELIMINANDO é: "  +  id);
+		
+		String jpqlSelect = "SELECT c FROM Contatto as c WHERE id =" + "'" + id + "'";
+		  
+		Query query = entityManager.createQuery(jpqlSelect);
+		list = query.getResultList();
+		Contatto cDaModiicare = list.get(0);
+		
+		//cDaModiicare = list.get(indiceDaModificare);
+		cDaModiicare.setNome(nome);
+		cDaModiicare.setCognome(cognome);
+		cDaModiicare.setNumeroTel(numTel);
+		cDaModiicare.setMail(mail);
+		entityManager.persist(cDaModiicare);
+		entityManager.refresh(cDaModiicare);
+		entityTransaction.commit();
+		
+	}
+	
 	public static void eliminaContattoDB(String parolaChiave) {
 		
 		EntityManager entityManager = JPAEntityManager.getEntityManager();

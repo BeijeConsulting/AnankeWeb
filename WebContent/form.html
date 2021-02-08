@@ -9,12 +9,11 @@
 
 		<h3>Inserisci i dati del nuovo contatto:</h3>
 		<form action="./ServletNuovoContatto" method="post">
-			
  			NOME&nbsp;<input type="text" name="nome" value="" placeholder="Nome"/><br>
  			COGNOME&nbsp;<input type="text" name="cognome" value="" placeholder="Cognome"/><br/>
  			NUMERO DI TELEFONO&nbsp;<input type="text" name="numTel" value="" placeholder="Numero di telefono"/><br>
  			EMAIL&nbsp;<input type="text" name="mail" value="" placeholder="email"/><br>
-			<br><input type="submit" value="INVIO"/>
+			<br><input type="submit" value="INSERISCI"/>
 		</form>
 		<br>
 		<h3>Inserisci parola chiave del contatto da cercare:</h3>
@@ -26,6 +25,13 @@
 		<br>
 		<h3>Inserisci parola chiave del contatto da eliminare:</h3>
 		<form action="./EliminaContatto.jsp" method="post">
+			PAROLA CHIAVE&nbsp;<input type="text" name="parolaChiave" value="" placeholder=""/><br/>
+			<br><input type="submit" value="INVIO"/>
+		</form>
+		<br>
+		<br>
+		<h3>Inserisci parola chiave del contatto da modificare:</h3>
+		<form action="./ModificaContatto.jsp" method="post">
 			PAROLA CHIAVE&nbsp;<input type="text" name="parolaChiave" value="" placeholder=""/><br/>
 			<br><input type="submit" value="INVIO"/>
 		</form>
