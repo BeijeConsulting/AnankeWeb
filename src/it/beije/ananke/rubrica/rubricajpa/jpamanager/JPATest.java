@@ -4,12 +4,16 @@ import it.beije.ananke.rubrica.Contact;
 
 public class JPATest {
 	public static void main(String[] args) {
-		Contact c = new Contact();
-		c.setFirstName("Francesco");
+		Contact c = JPAManager.selectByField("id", "25").get(0);
+		System.out.println(c);
+		c.setFirstName("Stefano");
 		c.setEmail("fg@gmail.com");
 		c.setLastName("giannini");
 		c.setPhoneNumber("3352569475");
-		JPAManager.insert(c);
+		System.out.println(c);
+		JPAManager.update(c);
+		Contact c1 = JPAManager.selectByField("id", "25").get(0);
+		System.out.println(c1);
 	}
 	
 }

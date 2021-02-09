@@ -17,8 +17,13 @@
 		
 		</style>
 	</head>
-	<h1>Rubrica</h1>
+	
 	<body>
+		<h1>Rubrica</h1>
+		<div>
+			<a href = "InsertContact.jsp">
+			<button style="margin:10px; padding:5px;">New</button> </a>
+		</div>
 		<div>
 			<%
 			List<Contact> contacts = JPAManager.selectAll();

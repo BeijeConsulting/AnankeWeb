@@ -44,7 +44,7 @@
 	</div>
 	
 	<div>
-		<a href = "PrintForm.jsp<%= c.getId() %>">
+		<a href = "PrintForm.jsp">
 			<button style="margin:10px; padding:5px;">Back</button> </a>
 	</div>
 

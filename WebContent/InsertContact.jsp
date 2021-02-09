@@ -10,19 +10,14 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-	
-		<%
-			String id = request.getParameter("id");
-			List<Contact> contacts = JPAManager.selectByField("id", id);
-			Contact c = contacts.get(0);
-		%>
-		<form action="./Modify.jsp?id=<%=c.getId()%>" method="post">
+
+		<form action="./Insert.jsp" method="post">
 			<div style="margin:10px; padding:2px;">
 				<div style="margin:5px;">
 					<label for="firstName">First name</label>
 				</div>
 				<div style="margin:5px;">
-					<input style="padding:10px;" type="text" name="firstName" value="<%=c.getFirstName()%>" size="25px;"/>
+					<input style="padding:10px;" type="text" name="firstName" value="" placeholder="first name" size="25px;"/>
 				</div>
 			</div>
 			
@@ -31,7 +26,7 @@
 					<label for="lastName">Last name</label>
 				</div>
 				<div style="margin:5px;">
-					<input style="padding:10px;" type="text" name="lastName" value="<%=c.getLastName()%>" size="25px;"/>
+					<input style="padding:10px;" type="text" name="lastName" value="" placeholder="last name" size="25px;"/>
 				</div>
 			</div>
 		
@@ -40,7 +35,7 @@
 					<label for="phoneNumber">Phone number</label>
 				</div>
 				<div style="margin:5px;">
-					<input style="padding:10px;" type="text" name="phoneNumber" value="<%=c.getPhoneNumber()%>" size="25px;"/>
+					<input style="padding:10px;" type="text" name="phoneNumber" value="" placeholder="phone number" size="25px;"/>
 				</div>
 			</div>
 			
@@ -49,13 +44,13 @@
 					<label for="email">Email</label>
 				</div>
 				<div style="margin:5px;">
-					<input style="padding:10px;" type="text" name="email" value="<%=c.getEmail()%>" size="25px;"/>
+					<input style="padding:10px;" type="text" name="email" value="" placeholder="email" size="25px;"/>
 				</div>
 			</div>
 			
 			<input type="submit" value="INVIO"/>
 		</form>
-		<a href = "ViewContact.jsp?id=<%= c.getId() %>">
+		<a href = "PrintContact.jsp">
 		<button style="margin:10px; padding:5px;">Back</button> </a>
 	
 	</body>

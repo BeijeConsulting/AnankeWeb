@@ -28,7 +28,7 @@ public class JPAManager {
 		EntityManager entityManager = RubricaEntityManager.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-		entityManager.persist(entityManager.find(Contact.class, contact.getId()));
+		entityManager.merge(contact);
 		entityTransaction.commit();
 		entityManager.close();
 	}
@@ -45,7 +45,7 @@ public class JPAManager {
 	public static List<Contact> selectAll() {
 		EntityManager entityManager = RubricaEntityManager.getEntityManager();
 
-		String jpqlSelect = "SELECT c FROM Contact as c";
+		String jpqlSelect = "SELECT c FROM Contact as c ORDER BY first_name";
 		Query query = entityManager.createQuery(jpqlSelect);
 		List<Contact> contacts = query.getResultList();
 
