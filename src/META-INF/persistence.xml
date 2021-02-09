@@ -4,6 +4,8 @@
 
 
 		<class>it.beije.ananke.web.rubrica.Contatto</class>
+		<class>i.beije.ananke.web.ecommerce.Utente</class>
+		<class>i.beije.ananke.web.ecommerce.Ordine</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		<properties>
@@ -15,4 +17,6 @@
 		</properties>
 
 	</persistence-unit>
+	
+	
 </persistence>

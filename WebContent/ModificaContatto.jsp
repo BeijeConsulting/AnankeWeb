@@ -29,11 +29,14 @@ if(list == null){
 		htmlCode += "|" + c.getId() + " " + c.getNome() + " " + c.getCognome() + " " 
 					+ c.getNumeroTel() + " " + c.getMail() + "|" + "<br>";
 	
-	
 	}
 
 	htmlCode += " <form action=\"./Modifica.jsp\" method=\"post\">ID DEL CONTATTO DA MODIFICARE&nbsp;<input type=\"text\" name=\"id\" value=\"\" placeholder=\"ID da eliminare\"/><br/><input type=\"submit\" value=\"MODIFICA\"/></form> ";
+	session.getId();
+	//HttpSession session = request.session();
 }
+
+
 
 %>
 
