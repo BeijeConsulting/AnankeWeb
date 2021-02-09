@@ -2,7 +2,7 @@
 <%@ page import = "javax.persistence.EntityManager" %>
 <%@ page import = "it.beije.ananke.rubrica.ContattoMio" %>
 <%@ page import = "it.beije.ananke.rubrica.RubricaEntityManager" %>
-<%@ page import = "it.beije.ananke.rubrica.RubricaJPA" %>
+<%@ page import = "it.beije.ananke.web.Operazioni" %>
 <%@ page import = "java.util.ArrayList"%>
 <%@ page import = "java.util.List" %>
 <!DOCTYPE html>
@@ -21,21 +21,25 @@
 	    		<th>TELEFONO</th>
 	  		</tr>
 	  		<% EntityManager em = RubricaEntityManager.getEntityManager();
-			RubricaJPA r = new RubricaJPA();
-			List<ContattoMio> lista = r.lettura(em);
+			Operazioni op = new Operazioni();
+			List<ContattoMio> lista = op.lettura(em);
 			if(lista == null){
-				
+				out.println("La tua rubrica è vuota!");
+				out.println("<form action = \"./SevletAggiungi\"><input type =\"submit\" value=\"Aggiungi\"> </form>");
 			}else{
-				for(ContattoMio c: r.lettura(em)){
-					out.println("<tr id = " + c.getId() + "><td>" + c.getName() + "</td>"
+				for(ContattoMio c: op.lettura(em)){
+					out.println("<tr id = " + c.getId() + ">"
+							+ "<td>" + c.getName() + "</td>"
 							+ "<td>" + c.getSurname() + "</td>"
 							+ "<td>" + c.getEmail() + "</td>"
-							+ "<td>" + c.getTelephone() + "</td></tr>");
+							+ "<td>" + c.getTelephone() + "</td>"
+							+ "<td> <form action = \"./ServletModifica\"> <input type=\"submit\" value = \"Modifica\"> </form></td>"
+							+ "<td> <form action = \"./ServletElimina\"> <input type=\"submit\" value = \"Elimina\"> </form></td>"
+							+"</tr>");
 				}
 			}
 			em.close();
 			%>
 		</table>
-	<h6><a href="indexMio.jsp">VAI AL MENU'</a></h6>
 </body>
 </html>
