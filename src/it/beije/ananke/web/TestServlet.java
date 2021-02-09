@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
 
 /**
  * Servlet implementation class TestServlet
@@ -50,15 +53,19 @@ public class TestServlet extends HttpServlet {
 		System.out.println("cognome = " + cognome);
 		System.out.println("nome = " + nome);
 
-		String html = "<html><head><title>Servlet di prova</title>" + 
-				"</head><body>"
-				+ "<p>COGNOME : " + cognome + "<br>"
-				+ "NOME : " + nome + "</p>"
-				+ "</body></html>";
-
-		response.getWriter().append(html);
+//		String html = "<html><head><title>Servlet di prova</title>" + 
+//				"</head><body>"
+//				+ "<p>COGNOME : " + cognome + "<br>"
+//				+ "NOME : " + nome + "</p>"
+//				+ "</body></html>";
+//		response.getWriter().append(html);
 		
-		//response.sendRedirect("index.html");
+		HttpSession session = request.getSession();
+		session.setAttribute("cognome", cognome);
+		session.setAttribute("nome", nome);
+		System.out.println("ID SESSION : " + session.getId());
+		
+		response.sendRedirect("dati.jsp");
 	}
 
 }
