@@ -16,7 +16,7 @@
 Email: <%= userBean.getEmail() %> <br>
 Password: <%= userBean.getPassword() %> <br>
 Session: <%= request.getSession() %>> <br>
-<a href = "index.jsp"> vai alla rubrica </a>
+<a href = "index.jsp"> vai alla rubrica </a>            
 
 </body>
 </html>
