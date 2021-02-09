@@ -29,6 +29,13 @@ public class JPAmanager {
 			
 	}
 	
+	public List<Contatto> leggiDB(){
+		String ricerca = "SELECT c FROM Contatto as c";
+		Query query = entityManager.createQuery(ricerca);
+		List<Contatto> contatti = query.getResultList();
+		return contatti;
+	}
+	
 	public List<Contatto> ricercaContattoJPA(Contatto contatto) {
 		boolean controlloAnd = false;
 		String ricerca = "SELECT c FROM Contatto as c WHERE ";

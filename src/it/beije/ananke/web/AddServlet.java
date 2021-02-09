@@ -50,7 +50,7 @@ public class AddServlet extends HttpServlet {
 		contatto.setTelefono(telefono);
 		
 		jpaManager.aggiungiContattoJPA(contatto);
-		response.sendRedirect("add.html");
+		response.sendRedirect("index.jsp");
 		doGet(request, response);
 	}
 

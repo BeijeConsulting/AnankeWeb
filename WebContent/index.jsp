@@ -1,27 +1,93 @@
+<%@page import="java.util.List"%>
+<%@page import="it.beije.ananke.rubrica.Contatto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="java.time.LocalDateTime"%>
+<%@page import="it.beije.ananke.rubrica.JPAmanager"%>
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Prima JSP</title>
-</head>
-<body>
+	<head>
+		<title>My Contacts</title>
+	</head>
+	
+	<style>
+		li {
+			float: left;
+		}
+		li a {
+		  display: block;
+		  color: white;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		}
+		ul {
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		  overflow: hidden;
+		  background-color: #333;
+		}
+		li a:hover {
+			background-color: #111;
+		}	
+	</style>
+	
+	<%	
+	JPAmanager jpa = new JPAmanager();
+	List<Contatto> contatti = new ArrayList<>();
+	contatti = jpa.leggiDB();
+	%>
+	
+	<body>
+		<nav>
+			<ul>
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="">Import</a></li>
+				<li><a href="">Export</a></li>
+				<li style="float:right"><a href="">Register</a></li>
+				<li style="float:right"><a href="">Login</a></li>
+			</ul>
+		</nav>
+		<div style="margin:16px">
+			<a href="add.html" class="button">
+				<img src="img/add.png" width="30px" height="30px">
+			</a>
+		</div>
+		<form id="delete" action="">
+			</form>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Surname</th>
+				<th>Email</th>
+				<th>Telephone</th>
+			</tr>
+			<%
+			for(Contatto contatto : contatti){
+			%>			
+			<tr>
+				
+					<td><label id="<%=contatto.getId()%>" form="delete"><%=contatto.getId()%></label>
+					<td><%=contatto.getNome()%></td>
+					<td><%=contatto.getCognome()%></td>
+					<td><%=contatto.getEmail()%></td>
+					<td><%=contatto.getTelefono()%></td>
+					<td><a href="" class="button">
+						<img src="img/edit.png" alt="Edit" width="30px" height="30px">
+						</a>
+					</td>
+					<td>
+						<input type="image" src="img/delete.png" alt="Delete" width="30px" height="30px"/>
 
-<%
-System.out.println(request.getRequestURL() + " index.jsp");
-
-LocalDateTime now = LocalDateTime.now();
-now = now.plusHours(1);
-
-System.out.println("CIAO ANANKE! :-) console");
-out.print("CIAO ANANKE! :-) 1<br>");
-%>
-<%= "CIAO ANANKE! :-) 2<br>" %>
-
-Data odierna : <%= now %>
-<br><br><br>
-<a href="form.html">VAI AL FORM</a>
-
-</body>
+					</td>
+			
+			</tr>
+			<%
+			}
+			%>
+		</table>
+	</body>
 </html>
