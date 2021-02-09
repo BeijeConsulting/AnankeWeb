@@ -56,6 +56,45 @@ public class JPAManager {
 		
 	}
 	
+public void inserisciContattoDb(String nome, String cognome, String numero, String email) {
+		
+		Contatto contatto = new Contatto(nome, cognome, numero, email);
+	
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		/*
+		String nome = tempContatto.getName();
+		
+		if(nome.contentEquals(".")) {
+			tempContatto.setName(null);
+		}
+		
+		String cognome = tempContatto.getSurname();
+		
+		if(cognome.contentEquals(".")) {
+			tempContatto.setSurname(null);
+		}
+		
+		String telefono = tempContatto.getTelephone();
+		
+		if(telefono.contentEquals(".")) {
+			tempContatto.setTelephone(null);
+		}
+		
+		String email = tempContatto.getEmail();
+		
+		if(email.contentEquals(".")) {
+			tempContatto.setEmail(null);
+		}
+		*/
+		
+		entityManager.persist(contatto);
+			
+		entityTransaction.commit();
+		
+	}
+	
 	public Contatto cercaContattoDb(String nome, String cognome) {
 		
 		String jpqlSelect = "SELECT c FROM Contatto as c WHERE c.name = '" + nome + "' and c.surname = '"+ cognome +"'";
@@ -152,6 +191,7 @@ public class JPAManager {
 		
 	}
 	
+	/*
 	public void visualizzaContattiDb() throws SQLException {
 		
 		String jpqlSelect = "SELECT c FROM Contatto as c";
@@ -174,6 +214,33 @@ public class JPAManager {
 		}
 		
 	}
+	*/
+	
+	public List<Contatto> visualizzaContattiDb() throws SQLException {
+		
+		String jpqlSelect = "SELECT c FROM Contatto as c";
+		
+		Query query = entityManager.createQuery(jpqlSelect);
+		List<Contatto> contatti = query.getResultList();
+		
+		System.out.println("Tutti i contatti: " + contatti.size());
+		System.out.println("");
+		
+		if (contatti.size() != 0) {
+			for (Contatto contatto : contatti) {
+				System.out.println("id : " + contatto.getId());
+				System.out.println("name : " + contatto.getName());
+				System.out.println("surname : " + contatto.getSurname());
+				System.out.println("telephone : " + contatto.getTelephone());
+				System.out.println("email : " + contatto.getEmail());
+				System.out.println("------------------");
+			}
+		}
+		
+		return contatti;
+		
+	}
+	
 	
 	/*
 	//JPQL
