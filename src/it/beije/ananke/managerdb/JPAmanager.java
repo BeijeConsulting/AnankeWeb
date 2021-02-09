@@ -46,7 +46,7 @@ public class JPAmanager {
 		EntityManager entityManager = RubricaEntityManager.getEntityManager();
 		
 		String JPASelect = "SELECT c FROM Contatto as c WHERE name='"+field+"' OR surname='"+field+"' OR telephone='"+field+"' OR"
-				+ "email='"+field+"'";
+				+ " email='"+field+"'";
 				
 		Query query = entityManager.createQuery(JPASelect);
 		List<Contatto> contatti = query.getResultList();
@@ -66,6 +66,29 @@ public class JPAmanager {
 
 	}
 
+	public static List<Contatto> visualizzaContatti() {
+		EntityManager entityManager = RubricaEntityManager.getEntityManager();
+		
+		String JPASelect = "SELECT c FROM Contatto as c";
+				
+				
+		Query query = entityManager.createQuery(JPASelect);
+		List<Contatto> contatti = query.getResultList();
+
+		if (contatti.isEmpty()) {
+			
+			entityManager.close();
+			return null;
+		}
+		
+		else
+		{
+			entityManager.close();
+			return contatti;
+		}
+		
+
+	}
 //	public static boolean modificaContatto(Contatto contatto) {
 //
 //			EntityManager entityManager = RubricaEntityManager.getEntityManager();

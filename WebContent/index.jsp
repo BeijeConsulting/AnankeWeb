@@ -4,24 +4,31 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Prima JSP</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Menu Rubrica</title>
 </head>
 <body>
-
-<%
-System.out.println(request.getRequestURL() + " index.jsp");
-
-LocalDateTime now = LocalDateTime.now();
-now = now.plusHours(1);
-
-System.out.println("CIAO ANANKE! :-) console");
-out.print("CIAO ANANKE! :-) 1<br>");
-%>
-<%= "CIAO ANANKE! :-) 2<br>" %>
-
-Data odierna : <%= now %>
-<br><br><br>
-<a href="form.html">VAI AL FORM</a>
+ <h1>Benvenuto nella tua Rubrica <i class="fa fa-address-book" style="font-size:36px"></i></h1>
+		  
+		  <h3>Seleziona una funzionalit&agrave</h3>
+		  
+		  <ol>
+				<li>
+				<form action="aggiungi_contatto.html" target="_blank">
+					<p>Aggiungi un contatto <input type="submit" value="Click here"></p>
+				</form>
+				</li>
+				<li>
+				<form action="cerca_contatto.html" target="_blank">
+					<p>Cerca un contatto <input type="submit" value="Click here"></p>
+				</form>
+				</li>
+				<li>
+				<form action="visualizzaRubrica.jsp" target="_blank">
+					<p>Visualizza la elenco contatti<input type="submit" value="Click here"></p>
+				</form>
+				</li>
+		  </ol>
 
 </body>
 </html>

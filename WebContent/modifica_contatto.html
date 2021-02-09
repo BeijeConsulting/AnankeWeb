@@ -2,13 +2,21 @@
 <html>
 	<header><title>Modifica Contatto</title></header>
 	<body>
-	      <h1>Cerca il contatto da modificare</h1>
+	      <h1>Modifica un contatto</h1>
 		  
-		  <h3>Inserisci uno dei campi del contatto che vuoi modificare</h3>	  
-				<form action="./updateContServlet">			
-					<label for="fields">Nome,Cognome,Email,tel..</label><br>
-					<input type="text" name="fields" placeholder="Marco,Rossi,m@gmail,333..">
-					<input type="submit" value="Cerca">
+		  <h3>Inserisci l'id del contatto che vuoi modificare e compila i campi da sostituire</h3>	  
+				<form action="" method="post">
+						<label for="id">ID</label><br>
+						<input type="text" name="id"><br>			
+						<label for="name">Nome</label><br>
+						<input type="text" name="name"><br>
+						<label for="surname">Cognome</label><br>
+						<input type="text" name="surname"><br>
+						<label for="telephone">Telefono</label><br>
+						<input type="number" name="telephone"><br>
+						<label for="email">Email</label><br>
+						<input type="email" name="email"><br>
+						<input style="margin-top:8px;" type="submit" value="Conferma" >	
 				</form>			
 	</body>
 </html>
