@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
 
 /**
  * Servlet implementation class TestServlet
@@ -37,22 +40,20 @@ public class TestServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getRequestURL() + " doPost");
-	JPAManager c= new JPAManager();
-	Contatto cz= new Contatto();
-	cz.setNome(request.getParameter("name"));
-	cz.setCognome(request.getParameter("surname"));
-	cz.setEmail(request.getParameter("email"));
-	cz.setTel(request.getParameter("tel"));
-	System.out.println(cz.toString());
-	c.addContatto(cz);
-	CreatorHTML creatore= new CreatorHTML();
-	response.getWriter().append(creatore.createpageAggiunto());
-	
 
-	
+//		String html = "<html><head><title>Servlet di prova</title>" + 
+//				"</head><body>"
+//				+ "<p>COGNOME : " + cognome + "<br>"
+//				+ "NOME : " + nome + "</p>"
+//				+ "</body></html>";
+//		response.getWriter().append(html);
 
+		HttpSession session = request.getSession();
+		session.setAttribute("cognome", cognome);
+		session.setAttribute("nome", nome);
+		System.out.println("ID SESSION : " + session.getId());
 		
+		response.sendRedirect("dati.jsp");
 	}
 
 }

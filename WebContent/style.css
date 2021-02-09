@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
 body{
     margin: 0;
     padding: 0; 
@@ -80,12 +80,21 @@ font-size: 26px;
 
 
 table {
-    border: 3px solid #000000;
-    width: 70%;
-    height: 50%;
-    overflow-y: scroll;
+    border: 2px solid #000000;
+    width: 750px;
+    height: 400px;
+    overflow:auto;
     text-align: left;
     border-collapse: collapse;
+    margin-top: 12px;
+font-family: 'Hachi Maru Pop', cursive;
+display:block;
+
+  }
+  td:hover{
+background-color:green ;
+font-size:16px;
+
   }
   table td, table th {
     border: 1px solid #000000;
@@ -116,3 +125,4 @@ table {
   table tfoot td {
     font-size: 14px;
   }
+  

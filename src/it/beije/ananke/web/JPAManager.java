@@ -142,20 +142,29 @@ public class JPAManager {
 		 EntityManager entityManager = JPASession.getEntityManager();
 		 	String query="Select c from Contatto as c where";
 
-		
-	
-		
-		
-						if(nome.trim().length()>0)
+		 	
+					if(nome!=null&&nome.trim().length()>0)
 				query+=" name='"+nome+"'";
-			if(cognome.trim().length()>0)
+			if(nome.trim().length()>0 && cognome.trim().length()>0)
 				query+=" and surname='"+cognome+"'";
-				if(email.trim().length()>0)
+			else {
+				if(cognome!=null&&cognome.trim().length()>0)
+					query+=" surname='"+cognome+"'";
+			}
+				if((nome.trim().length()>0 || cognome.trim().length()>0) &&email!=null && email.trim().length()>0)
 				query+=" and email='"+email+"' ";
-
+				else {
+					if(email!=null&&email.trim().length()>0)
+						query+=" email='"+email+"' ";
+				}
 					
-				if(telefono.trim().length()>0)
+				if((nome.trim().length()>0 || cognome.trim().length()>0||email.trim().length()>0) && telefono!=null&&telefono.trim().length()>0)
 				query+=" and telephone='"+telefono+"' ";
+				else {
+					if(telefono!=null&&telefono.trim().length()>0)
+						query+="  telephone='"+telefono+"' ";
+					
+				}
 			
 			
 			Query result = entityManager.createQuery(query);

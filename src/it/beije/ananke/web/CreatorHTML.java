@@ -101,32 +101,7 @@ public String ricercaForm() {
 
 public String ricercaFormResult(String nome, String cognome, String email, String telefono) {
 	StringBuilder s= new StringBuilder();
-	s.append("<html lang=\"it\">\r\n"
-			+ "<head>\r\n"
-			+ "    <meta charset=\"UTF-8\">\r\n"
-			+ "    <title>Rubrica</title>\r\n"
-			+ "    <link rel=\"stylesheet\" href=\"style.css\">\r\n"
-			+ "</head>\r\n"
-			+ "<body>\r\n"
-			+ "    <div id=\"head\"> <h1>Rubrica</h1></div>\r\n"
-			+ "    \r\n"
-			+ "    <div id=\"conteiner\"> \r\n"
-			+ "<div class=\"divlat\">\r\n"
-			+ "\r\n"
-			+ "</div>\r\n"
-			+ "<div class=\"divlat\" style=\"width: 90%; background-color: white;\">\r\n"
-			+ "     \r\n"
-			+ "    <form action=\"./ricercaContatto.html\" method=\"post\">\r\n"
-			+ "   <fieldset>\r\n"
-			+ "        <legend>Compila i campi</legend>\r\n"
-			+ "    <label for=\"name\">Nome:   </label> <input type=\"text\" name=\"name\"class=\"input\" placeholder=\"Mario\"> <br>\r\n"
-			+ "    <label for=\"name\">Cognome:   </label> <input type=\"text\" name=\"surname\"class=\"input\"  placeholder=\"Rossi\"> <br>\r\n"
-			+ "    <label for=\"name\">Email:   </label> <input type=\"text\" name=\"email\"class=\"input\" placeholder=\"mariorossi@cipolla.it\"> <br>\r\n"
-			+ "    <label for=\"name\">Telefono:   </label> <input type=\"text\" name=\"tel\"class=\"input\"  placeholder=\"334xxxxxx\"> <br>\r\n"
-			+ "<button class=\"button\"type=\"submit\">Ricerca</button>\r\n"
-			+ "\r\n"
-			+ "    </fieldset>\r\n"
-			+ "    </form>\r\n"
+	s.append(""
 			+ "+ \"    <table class=\\\"minimalistBlack\\\">\\r\\n\"\r\n"
 			+ "				+ \"        <thead>\\r\\n\"\r\n"
 			+ "				+ \"        <tr>\\r\\n\"\r\n"
@@ -329,6 +304,6 @@ public String ricercaFormResult(String nome, String cognome, String email, Strin
 		return s.toString();
 	}
 	public static void main(String ...strings ) {
-		System.out.println(new CreatorHTML().createpageAggiunto());
+		System.out.println(new CreatorHTML().ricercaForm());
 	}
 }
