@@ -6,10 +6,14 @@
 		</style>
 	</head>
 	<body>
-		<h3>Inserisci i dati</h3>
+		<h3>Inserimento dati</h3>
 		<form action="receiver.jsp" method="post">
-			COGNOME&nbsp;<input type="text" name="cognome" value="" placeholder="Bianchi"/><br/>
- 			NOME&nbsp;<input type="text" name="nome" value="" placeholder="Marco"/><br>
+		<table>
+		<tr><th>Nome</th> <td><input type="text" name="nome" value="" placeholder="Marco"/></td></tr>
+		 <tr><th>Cognome</th><td><input type="text" name="cognome" value="" placeholder="Bianchi"/></td></tr>
+		 <tr><th>Telefono</th><td><input type="text" name="telefono" value="" placeholder="@gmail"/></td></tr>
+ 		<tr><th>Email</th> <td><input type="text" name="email" value="" placeholder="+39"/></td></tr>	
+ 		</table>
 			<br><input type="submit" value="INVIO"/>
 		</form>
 	</body>

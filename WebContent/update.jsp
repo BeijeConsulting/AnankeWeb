@@ -13,12 +13,9 @@ String cognome = request.getParameter("cognome");
 String nome = request.getParameter("nome");
 String telefono = request.getParameter("telefono");
 String email = request.getParameter("email");
-System.out.println("cognome = " + cognome);
-System.out.println("nome = " + nome);
-System.out.println("telefono = " + telefono);
-System.out.println("email = " + email);
+out.print("CONTATTO AGGIORNATO");
 JPAmanager j = new JPAmanager();
-j.inserimento(nome, cognome ,telefono, email);
+j.update(email,nome,cognome, telefono);
 //.. metodo per inserirli nel DB....magari provo con metodi statici
 //Contatto contatto = new Contatto();
 //....

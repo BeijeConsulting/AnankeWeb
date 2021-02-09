@@ -4,24 +4,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Prima JSP</title>
+<title>Rubrica</title>
 </head>
 <body>
-
-<%
-System.out.println(request.getRequestURL() + " index.jsp");
-
-LocalDateTime now = LocalDateTime.now();
-now = now.plusHours(1);
-
-System.out.println("CIAO ANANKE! :-) console");
-out.print("CIAO ANANKE! :-) 1<br>");
-%>
-<%= "CIAO ANANKE! :-) 2<br>" %>
-
-Data odierna : <%= now %>
 <br><br><br>
-<a href="form.html">VAI AL FORM</a>
-
+<h1 align = center> Comandi rubrica </h1> 
+<br>
+<p align = center>
+<a href="form.html" >VAI ALL' INSERIMENTO</a><br>
+<a href="delete.html">ELIMINA CONTATTO</a><br>
+<a href="update.html">AGGIORNA CONTATTO</a><br>
+<a href="read.jsp">LEGGI RUBRICA</a><br>
+<a href="search.html">VAI AL FORM</a><br>
+</p>
 </body>
 </html>
