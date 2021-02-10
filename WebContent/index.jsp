@@ -32,6 +32,24 @@
 		li a:hover {
 			background-color: #111;
 		}	
+		.dropdown {
+		  position: relative;
+		  display: inline-block;
+		}
+		
+		.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #f9f9f9;
+		  min-width: 160px;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  padding: 12px 16px;
+		  z-index: 1;
+		}
+		
+		.dropdown:hover .dropdown-content {
+		  display: block;
+		}
 	</style>
 	
 	<%	
@@ -43,12 +61,14 @@
 	<body>
 		<nav>
 			<ul>
-				<li><a href="index.jsp">Home</a></li>
+			
+				<li><a href="index.jsp">Home</a></li>				
 				<li><a href="">Import</a></li>
 				<li><a href="">Export</a></li>
 				<li style="float:right"><a href="">Register</a></li>
 				<li style="float:right"><a href="">Login</a></li>
 			</ul>
+			
 		</nav>
 		<div style="margin:16px">
 			<a href="add.html" class="button">
@@ -68,22 +88,22 @@
 			<%
 			for(Contatto contatto : contatti){
 			%>			
-			<tr>
-				
-					<td><label id="<%=contatto.getId()%>" form="delete"><%=contatto.getId()%></label>
-					<td><%=contatto.getNome()%></td>
-					<td><%=contatto.getCognome()%></td>
-					<td><%=contatto.getEmail()%></td>
-					<td><%=contatto.getTelefono()%></td>
-					<td><a href="" class="button">
-						<img src="img/edit.png" alt="Edit" width="30px" height="30px">
-						</a>
-					</td>
-					<td>
-						<input type="image" src="img/delete.png" alt="Delete" width="30px" height="30px"/>
-
-					</td>
-			
+			<tr>				
+				<td><%=contatto.getId()%></td>
+				<td><%=contatto.getNome()%></td>
+				<td><%=contatto.getCognome()%></td>
+				<td><%=contatto.getEmail()%></td>
+				<td><%=contatto.getTelefono()%></td>
+				<td>
+				<a href="edit.jsp?id=<%=contatto.getId()%>" class="button">
+					<img src="img/edit.png" alt="Edit" width="30px" height="30px">
+					</a>
+				</td>
+				<td>
+				<a href="delete.jsp?id=<%=contatto.getId()%>" class="button">
+					<img src="img/delete.png" alt="Delete" width="30px" height="30px">
+					</a>
+				</td>			
 			</tr>
 			<%
 			}

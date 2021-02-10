@@ -15,16 +15,8 @@ public class JPAmanager {
 	public void aggiungiContattoJPA(Contatto contatto) {
 		//apro transazione
 		EntityTransaction entityTransaction = entityManager.getTransaction();
-		entityTransaction.begin();
-		
-		Contatto newContatto = new Contatto();
-		newContatto.setNome(contatto.getNome());
-		newContatto.setCognome(contatto.getCognome());
-		newContatto.setEmail(contatto.getEmail());
-		newContatto.setTelefono(contatto.getTelefono());
-		
-		entityManager.persist(newContatto);
-		
+		entityTransaction.begin();		
+		entityManager.persist(contatto);		
 		entityTransaction.commit();
 			
 	}
@@ -34,6 +26,18 @@ public class JPAmanager {
 		Query query = entityManager.createQuery(ricerca);
 		List<Contatto> contatti = query.getResultList();
 		return contatti;
+	}
+	
+	public void eliminaContattoJPA(int id) {
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.find(Contatto.class, id);
+		entityManager.remove(entityManager.find(Contatto.class, id));
+		entityTransaction.commit();
+	}
+	
+	public Contatto ricercaContattoJPA(int id) {
+		return entityManager.find(Contatto.class, id);		 
 	}
 	
 	public List<Contatto> ricercaContattoJPA(Contatto contatto) {
@@ -75,6 +79,20 @@ public class JPAmanager {
 		return contatti;
 	}
 
+	public void modificaContattoJPA(int id, Contatto contattoModificato) {
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		Contatto contatto = new Contatto();
+		contatto = entityManager.find(Contatto.class, id);
+		contatto.setNome(contattoModificato.getNome());
+		contatto.setCognome(contattoModificato.getCognome());
+		contatto.setEmail(contattoModificato.getEmail());
+		contatto.setTelefono(contattoModificato.getTelefono());
+		entityManager.persist(contatto);
+		entityTransaction.commit();
+	}
+	
 	public void modificaContattoJPA(List<Contatto> contatti,Contatto contattoModificato) {
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();

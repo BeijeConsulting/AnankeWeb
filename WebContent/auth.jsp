@@ -1,4 +1,5 @@
-<%@page import="it.beije.ananke.web.User"%>
+<%@page import="it.beije.ananke.ecommerce.JPAmanager"%>
+<%@page import="it.beije.ananke.ecommerce.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -29,13 +30,19 @@ userBean.setPassword(request.getParameter("password"));
 
 %>
 
-<jsp:useBean id="userBean" class="it.beije.ananke.web.User" scope="session"/>
+<jsp:useBean id="userBean" class="it.beije.ananke.ecommerce.User" scope="session"/>
 
-<jsp:setProperty property="username" name="userBean" param="username_param"/>
-<jsp:setProperty property="password" name="userBean"/>
+<jsp:setProperty property="email" name="userBean" param="email"/>
+<jsp:setProperty property="password" name="userBean" param="password"/>
 
+<%
+	JPAmanager jpa = new JPAmanager();
+	if (jpa.authentication(userBean.getEmail(), userBean.getPassword())){
+		out.print("OK");
+	}else{
+		out.print("Error");
+	}
 
-USERNAME : <%= userBean.getUsername() %><br>
-PASSWORD : <%= userBean.getPassword() %><br>
+%>
 </body>
 </html>
