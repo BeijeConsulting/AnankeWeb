@@ -19,7 +19,7 @@ public class UserBean {
 	@Column(name="email")
 	private String email;
 	
-	@Column(name="password")
+	@Column(name="pasword")
 	private String password;
 	
 	@Column(name="first_name")

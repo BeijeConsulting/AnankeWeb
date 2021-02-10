@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ServletLogin
+ * Servlet implementation class ServletPlus
  */
-@WebServlet("/ServletLogin")
-public class ServletLogin extends HttpServlet {
+@WebServlet("/ServletPlus")
+public class ServletPlus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private JPAmanager m = new JPAmanager();   
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletLogin() {
+    public ServletPlus() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,17 +36,8 @@ public class ServletLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
-		
-		UserBean user = m.login(request.getParameter("email"), request.getParameter("password"));
-		//controllo email
-		if(user == null) {
-			response.sendRedirect("./home.html");
-		}else if(request.getParameter("password").equals(user.getPassword())) {
-			session.setAttribute("utente", user);
-			response.sendRedirect("./principale.jsp");
-		}else {
-			response.sendRedirect("./authFail.html");
+		if(session.getAttribute("ordine") == null) {
+			session.setAttribute("ordine", new Object());
 		}
 	}
 

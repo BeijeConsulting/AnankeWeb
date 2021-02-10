@@ -19,8 +19,8 @@ public class ProductBean {
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="desc")
-	private String desc;
+	@Column(name="descrip")
+	private String descrip;
 	
 	@Column(name="price")
 	private double price;
@@ -47,12 +47,12 @@ public class ProductBean {
 	
 	
 	public String getDesc() {
-		return desc;
+		return descrip;
 	}
 	
 	
 	public void setDesc(String desc) {
-		this.desc = desc;
+		this.descrip = desc;
 	}
 	
 	

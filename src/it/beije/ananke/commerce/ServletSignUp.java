@@ -19,6 +19,7 @@ import it.beije.ananke.rubrica.RubricaEntityManager;
 @WebServlet("/ServletSignUp")
 public class ServletSignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private JPAmanager m = new JPAmanager();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,21 +42,13 @@ public class ServletSignUp extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-		EntityManager em = RubricaEntityManager.getEntityManager();
-		aggiungiUser(em, request);
-		System.out.println("WIII");
-		em.close();
-		
+		if(m.controlloEmail(request.getParameter("email"))) {
+			m.aggiungiUser(defUser(request));
+		}else {
+			response.sendRedirect("registrati.html");
+		}
 	}
 	
-	public void aggiungiUser(EntityManager em, HttpServletRequest request) {
-		EntityTransaction et = em.getTransaction();
-		et.begin();
-		UserBean bean = defUser(request);
-		em.persist(bean);
-		et.commit();
-		System.out.println("La voce è stata inserita correttamente.");
-	}
 	
 	public UserBean defUser(HttpServletRequest request) {
 		UserBean bean = new UserBean();
