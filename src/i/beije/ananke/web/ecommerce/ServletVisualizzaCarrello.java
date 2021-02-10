@@ -1,23 +1,27 @@
 package i.beije.ananke.web.ecommerce;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ServetRegistrazione
+ * Servlet implementation class ServletVisualizzaCarrello
  */
-@WebServlet("/ServetRegistrazione")
-public class ServetRegistrazione extends HttpServlet {
+@WebServlet("/ServletVisualizzaCarrello")
+public class ServletVisualizzaCarrello extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServetRegistrazione() {
+    public ServletVisualizzaCarrello() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,20 +38,12 @@ public class ServetRegistrazione extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Servelt registrazione");
-		String nome = request.getParameter("nome");
-		String cognome = request.getParameter("cognome");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		List<Carrello> listC = new ArrayList<>();
+		HttpSession s = request.getSession();
 		
-		if(Utente.cercaUtente(email) == true) {
-			response.sendRedirect("./error.html");
-		} else {
-			Utente.registraNuovoUtente(email, nome, cognome, password);
-			response.sendRedirect("./registrazioneOk.html");
-		}
-		
-		//doGet(request, response);
+		listC = DbManager.getCarrello((Integer)s.getAttribute("UserId"));
+		s.setAttribute("ListC", listC);
+		response.sendRedirect("./visualizzaCarrello.jsp");
 	}
 
 }

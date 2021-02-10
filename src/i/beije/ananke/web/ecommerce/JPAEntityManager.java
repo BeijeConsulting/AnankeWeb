@@ -14,7 +14,7 @@ public class JPAEntityManager {
 	public static EntityManager getEntityManager() {
 		
 		if(entityManager == null) {
-			entityManagerFactory = Persistence.createEntityManagerFactory("Rubrica");
+			entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce");
 			entityManager = entityManagerFactory.createEntityManager();
 		}
 		

@@ -6,18 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ServetRegistrazione
+ * Servlet implementation class ServletLogin
  */
-@WebServlet("/ServetRegistrazione")
-public class ServetRegistrazione extends HttpServlet {
+@WebServlet("/ServletLogin")
+public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServetRegistrazione() {
+    public ServletLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,20 +35,17 @@ public class ServetRegistrazione extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Servelt registrazione");
-		String nome = request.getParameter("nome");
-		String cognome = request.getParameter("cognome");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
 		
-		if(Utente.cercaUtente(email) == true) {
-			response.sendRedirect("./error.html");
+		int log = Utente.login(request.getParameter("email"),request.getParameter("password"));
+		if(log != 0) {
+			HttpSession session = request.getSession();
+			session.setAttribute("UserId", log);
+			response.sendRedirect("catalogo.jsp");
 		} else {
-			Utente.registraNuovoUtente(email, nome, cognome, password);
-			response.sendRedirect("./registrazioneOk.html");
+			response.sendRedirect("loginError.html");
 		}
 		
-		//doGet(request, response);
+		doGet(request, response);
 	}
 
 }

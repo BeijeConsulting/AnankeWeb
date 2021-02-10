@@ -16,13 +16,13 @@ public class Ordine {
 	@Column(name="id")
 	int id;
 	
-	@Column(name="id")
+	@Column(name="user_id")
 	int idUtente;
 	
-	@Column(name="id")
+	@Column(name="amount")
 	int totale;
 	
-	@Column(name="id")
+	@Column(name="state")
 	String stato;
  
 

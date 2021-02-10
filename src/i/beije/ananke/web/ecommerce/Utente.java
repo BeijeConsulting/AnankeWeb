@@ -13,8 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Query;
 import javax.persistence.Table;
 
-import it.beije.ananke.web.rubrica.Contatto;
-import it.beije.ananke.web.rubrica.JPAEntityManager;
+
 
 @Entity
 @Table(name = "user")
@@ -34,18 +33,20 @@ public class Utente{
 	@Column(name = "second_name")
 	private String cognome;
 	
-	@Column(name = "password")
+	@Column(name = "pasword")
 	private String password;
 	
 	public static boolean registraNuovoUtente(String email, String nome, String cognome, String password) {
-		
-		
+
 		EntityManager entityManager = JPAEntityManager.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		
 		Utente u = new Utente();
-		
+		u.setNome(nome);
+		u.setCognome(cognome);
+		u.setEmail(email);
+		u.setPassword(password);
 		
 		entityManager.persist(u);
 		entityTransaction.commit();
@@ -54,21 +55,51 @@ public class Utente{
 		
 	}
 	
-	public static boolean cercaUtente(String email) {
+	@SuppressWarnings("unchecked")
+	public static int login(String email, String password) {
 		
-		List<Contatto> list = new ArrayList<>();
+		int id = 0;
+		List<Utente> list = new ArrayList<>();
+		List<Integer> listId = new ArrayList<>();
 		EntityManager entityManager = JPAEntityManager.getEntityManager();
 		
+		String jpqlSelect = "SELECT u FROM Utente as u " + "WHERE email = " + "'" + email + "'";
+		String jpqlSelectId = "SELECT id FROM Utente as u " + "WHERE email = " + "'" + email + "'";  
+		
+		Query query = entityManager.createQuery(jpqlSelect);
+		Query query2 = entityManager.createQuery(jpqlSelectId);
+		listId = query2.getResultList();
+		list = query.getResultList();
+		
+		
+		if(list != null) {
+			if(list.get(0).getPassword().equals(password) == true) {
+				id = listId.get(0);
+				return id;
+			}
+		}
+		
+		return 0;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static boolean cercaUtente(String email) {
+		
+		List<Utente> list = new ArrayList<>();
+		EntityManager entityManager = JPAEntityManager.getEntityManager();
 		String jpqlSelect = "SELECT u FROM Utente as u " + "WHERE email = " + "'" + email + "'";
 				  
 		
 		Query query = entityManager.createQuery(jpqlSelect);
 		list = query.getResultList();
 		
-		if(list != null)
-			return true;
-		else
+		if(list.size() == 0) {
+			System.out.println("UTENTE DA REGITSRARE");
 			return false;
+		}else {
+			System.out.println("UTENTE GIA NEL DB");
+			return true;
+		}
 	}
 
 	public int getId() {
