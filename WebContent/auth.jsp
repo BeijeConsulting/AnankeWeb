@@ -1,3 +1,5 @@
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
+<%@page import="it.beije.ananke.ecommerce.Order"%>
 <%@page import="it.beije.ananke.ecommerce.JPAmanager"%>
 <%@page import="it.beije.ananke.ecommerce.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -37,10 +39,10 @@ userBean.setPassword(request.getParameter("password"));
 
 <%
 	JPAmanager jpa = new JPAmanager();
-	if (jpa.authentication(userBean.getEmail(), userBean.getPassword())){
-		out.print("OK");
+	if (jpa.authentication(userBean.getEmail(), userBean.getPassword())){	
+		response.sendRedirect("products.jsp");
 	}else{
-		out.print("Error");
+		response.sendRedirect("login.html");
 	}
 
 %>

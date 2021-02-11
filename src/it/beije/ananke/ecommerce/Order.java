@@ -15,7 +15,7 @@ public class Order {
 	@Column(name="id")
 	private int id;
 	@Column(name="user_id")
-	private String userId;
+	private int userId;
 	@Column(name="amount")
 	private double amount;
 	@Column(name="state")
@@ -24,11 +24,14 @@ public class Order {
 	public int getId() {
 		return id;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	

@@ -19,8 +19,21 @@ public class JPAmanager {
 		entityTransaction.commit();		
 	}
 	
+	public void addOrder(Order order) {
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.persist(order);		
+		entityTransaction.commit();		
+	}
+	
 	public List<User> findAllUsers(){
 		String ricerca = "SELECT u FROM User as u";
+		Query query = entityManager.createQuery(ricerca);
+		return query.getResultList();	
+	}
+	
+	public List<Product> findAllProducts(){
+		String ricerca = "SELECT p FROM Product as p";
 		Query query = entityManager.createQuery(ricerca);
 		return query.getResultList();	
 	}
@@ -35,6 +48,20 @@ public class JPAmanager {
 	
 	public User findUser(int id) {
 		return entityManager.find(User.class, id);		 
+	}
+	
+	public int findUser(String email) {
+		String ricerca = "SELECT id FROM User WHERE email='" + email + "'";
+		Query query = entityManager.createNativeQuery(ricerca);
+		return Integer.parseInt(query.getSingleResult().toString());		 
+	}
+	
+	public Product findProduct(int id) {
+		return entityManager.find(Product.class, id);		 
+	}
+	
+	public Order findOrder(int id) {
+		return entityManager.find(Order.class, id);		 
 	}
 	
 	public boolean authentication(String email, String password) {
