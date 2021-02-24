@@ -38,7 +38,7 @@ public class ServletLogin extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		
-		UserBean user = m.login(request.getParameter("email"), request.getParameter("password"));
+		User user = m.login(request.getParameter("email"), request.getParameter("password"));
 		//controllo email
 		if(user == null) {
 			response.sendRedirect("./home.html");

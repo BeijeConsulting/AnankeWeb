@@ -11,7 +11,7 @@ import it.beije.ananke.rubrica.RubricaEntityManager;
 
 public class JPAmanager {
 
-	public void aggiungiUser(UserBean user) {
+	public void aggiungiUser(User user) {
 		EntityManager em = RubricaEntityManager.getEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
@@ -23,7 +23,7 @@ public class JPAmanager {
 	
 	
 	public boolean controlloEmail(String s) {
-		List<UserBean> list = new ArrayList<>();
+		List<User> list = new ArrayList<>();
 		String jqlSelect = "SELECT u FROM UserBean as u WHERE email = '" + s +"'";
 		EntityManager em = RubricaEntityManager.getEntityManager();
 		Query query = em.createQuery(jqlSelect);
@@ -37,8 +37,8 @@ public class JPAmanager {
 	}
 	
 	
-	public UserBean login(String email, String pswd) {
-		List<UserBean> list = new ArrayList<>();
+	public User login(String email, String pswd) {
+		List<User> list = new ArrayList<>();
 		String jqlSelect = "SELECT u FROM UserBean as u WHERE email = '" + email +"'";
 		EntityManager em = RubricaEntityManager.getEntityManager();
 		Query query = em.createQuery(jqlSelect);

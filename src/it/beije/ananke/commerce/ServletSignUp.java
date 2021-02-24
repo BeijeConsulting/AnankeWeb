@@ -50,8 +50,8 @@ public class ServletSignUp extends HttpServlet {
 	}
 	
 	
-	public UserBean defUser(HttpServletRequest request) {
-		UserBean bean = new UserBean();
+	public User defUser(HttpServletRequest request) {
+		User bean = new User();
 		bean.setEmail(request.getParameter("email"));
 		bean.setFirstName(request.getParameter("name_param"));
 		bean.setSecondName(request.getParameter("surname_param"));

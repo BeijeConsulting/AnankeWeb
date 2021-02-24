@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="it.beije.ananke.commerce.UserBean"%>
+<%@page import="it.beije.ananke.commerce.User"%>
 <%@page import="it.beije.ananke.commerce.ProductBean"%>
 <%@page import="it.beije.ananke.commerce.JPAmanager"%>
 <!DOCTYPE html>
@@ -9,7 +9,8 @@
 	<title></title>
 </head>
 <body>
-<%UserBean user = (UserBean) session.getAttribute("utente"); 
+<%
+User user = (User) session.getAttribute("utente"); 
   JPAmanager m = new JPAmanager();
 %>
 	<h1>Benvenuto, <%out.print(user.getFirstName()); %> cosa vuoi comprare?</h1>

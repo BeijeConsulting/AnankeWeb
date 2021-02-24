@@ -4,7 +4,7 @@
 
 		<class>it.beije.ananke.rubrica.Contatto</class>
 		<class>it.beije.ananke.rubrica.ContattoMio</class>
-		<class>it.beije.ananke.commerce.UserBean</class>
+		<class>it.beije.ananke.commerce.User</class>
 		<class>it.beije.ananke.commerce.ProductBean</class>
 		<class>it.beije.ananke.commerce.OrderBean</class>
 		<class>it.beije.ananke.commerce.OrderItemBean</class>
