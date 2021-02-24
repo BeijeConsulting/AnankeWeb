@@ -32,10 +32,10 @@ let props = {
 			}
 			
 let dir = "right";
+let snakeWidth = 0;
 
 function changeProps() {
 	let distance = 0;
-	let snakeWidth = 0;
 	for(let i=quadro.length-1; i>=0; i--){
 		quadro[i].style.width = props.width + "px";
 		quadro[i].style.height = props.height + "px";
@@ -54,15 +54,18 @@ let leftDistance = 1;
 let topDistance = 1;
 
 function move(){
+	let qPreTop = new Array();
+	let qPreLeft = new Array();
+	
 	//movimento verso destra
 	if(dir === "right"){		
 		//fino a quando arriva in fondo allo schermo
 		if(quadro[0].offsetLeft < window.innerWidth - props.width){
 			leftDistance += mov;
-			//aumento la distanza per ogni quadratino
-			for(let i=0; i<quadro.length; i++){
-			quadro[i].style.left = quadro[i].distance + leftDistance + "px"
-			}	
+			//sposto il primo quadrato verso destra tutti gli altri seguono quello precedente
+			qPreTop[0] = quadro[0].style.top;
+			qPreLeft[0] = quadro[0].style.left;
+			quadro[0].style.left = leftDistance + "px";
 		//se tocca il bordo dello schermo stop, perdi
 		}else{
 			 clearInterval(loop);
@@ -70,66 +73,41 @@ function move(){
 		}
 	}
 	
+	//movimento verso il basso
 	if(dir === "down"){
 		if(quadro[0].offsetTop < window.innerHeight - props.width){
-			//posizione in cui il serpente gira
-			let pos = quadro[0].style.left;
-			let allineati = true;
-			let qNonAllineato;
-			for(let i=0; i<quadro.length; i++){
-				//se il quadrato non ha ancora raggiunto la posizione in cui deve girare, lo sposto a destra
-				if(quadro[i].style.left < pos){
-					allineati = false;
-					qNonAllineato = i;
-					break;
-				}
-			}
-			
-			if(allineati){	
-				topDistance += mov;			
-				for(let i=0; i<quadro.length; i++){					
-					quadro[i].style.top = quadro[i].distance + topDistance + "px";
-				}
-			}else{
-			leftDistance += mov;
-				//quadrati non allineati li sposto a destra
-				for(let i=qNonAllineato; i<quadro.length; i++){
-					quadro[i].style.left = quadro[i].distance + leftDistance + "px";
-				}
-				//quadrati allineati li sposto in basso
-				for(let i=0; i<qNonAllineato; i++){
-					console.log("top distance " + topDistance);
-					if(i !== qNonAllineato-1)
-						//scendo di topdistance + la posizione del quadrato - i quadrati che mancano
-						quadro[i].style.top = topDistance + quadro[i].distance - props.width * (quadro.length - qNonAllineato) + "px";
-					else
-						quadro[i].style.top = topDistance + "px";
-					//quadro[i].style.top = quadro[i].distance + topDistance + "px";
-					//quadro[i].style.top = topDistance - quadro[i].distance + "px";
-					console.log("quadro " + i + ": " + quadro[i].style.top);
-				}				
-			}
-			//se tocca il bordo dello schermo stop, perdi
+			topDistance += mov;
+			//sposto il primo quadrato verso il basso tutti gli altri seguono quello precedente
+			qPreTop[0] = quadro[0].style.top;
+			qPreLeft[0] = quadro[0].style.left;
+			quadro[0].style.top = topDistance + "px";
 		}else{
 			 clearInterval(loop);
 			 alert("You lost!");
 		}
 	}
 	
-	/*if(dir === "left"){
-		if(quadro[0].offsetLeft < window.innerWidth - snake.offsetWidth){
+	//movimento verso sinistra
+	if(dir === "left"){
+		if(quadro[0].offsetLeft > snakeWidth){
 			leftDistance -= mov;
-			//aumento la distanza per ogni quadratino
-			for(let i=0, j=quadro.length-1; i<quadro.length; i++, j--){
-			quadro[i].style.top =  quadro[j].distance + topDistance + quadro[i].distance + "px"
-			quadro[i].style.left = leftDistance + quadro[j].distance + "px"			
-			}
-		//se tocca il bordo dello schermo stop, perdi
+			//sposto il primo quadrato verso sinistra tutti gli altri seguono quello precedente
+			qPreTop[0] = quadro[0].style.top;
+			qPreLeft[0] = quadro[0].style.left;
+			quadro[0].style.left = leftDistance + "px";
 		}else{
 			 clearInterval(loop);
 			 alert("You lost!");
 		}
-	}*/
+	}
+	
+		//ogni quadrato prende la posizione del quadrato che lo precede	
+	for(let i=1; i<quadro.length; i++){
+		qPreTop[i] = quadro[i].style.top;
+		qPreLeft[i] =quadro[i].style.left;
+		quadro[i].style.top = qPreTop[i-1];
+		quadro[i].style.left = qPreLeft[i-1];
+	}
 		
 }
 
@@ -154,12 +132,12 @@ function getKeyCod() {
 	//destra
 	if (key == 39) {
 		if(dir !== "right"){
-			dir = "right";			
+			dir = "right";
 		}
 	//sinistra
 	} else if (key == 37) {
 		if(dir !== "left"){
-			dir = "left";			
+			dir = "left";				
 		}
 	//su
 	} else if (key == 38) {
@@ -170,7 +148,6 @@ function getKeyCod() {
 	} else if (key == 40) {
 		if(dir !== "down"){
 			dir = "down";	
-			topDistance += mov;
 		}
 	}
 }
