@@ -17,7 +17,7 @@ CREATE TABLE `ananke`.`product` (
   PRIMARY KEY (`id`));
   
   
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `amount` double NOT NULL,
@@ -34,10 +34,10 @@ CREATE TABLE `ananke`.`order_item` (
   PRIMARY KEY (`id`));
   
   
-ALTER TABLE `ananke`.`order` 
+ALTER TABLE `ananke`.`orders` 
 ADD INDEX `fk_user_idx` (`user_id` ASC) VISIBLE;
-;
-ALTER TABLE `ananke`.`order` 
+
+ALTER TABLE `ananke`.`orders` 
 ADD CONSTRAINT `fk_user`
   FOREIGN KEY (`user_id`)
   REFERENCES `ananke`.`user` (`id`)
