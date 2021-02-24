@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+table {
+  margin: auto;
+}
+
+td {
+  border-style: solid;
+  border-size: 1px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h2>CALCULATOR</h2>
+
+<h3 id="display">___</h3>
+
+<table>
+  <tr>
+    <td id="t1" onclick="get(1);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')">1</td>
+    <td id="t2" onclick="get(2);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')">2</td>
+    <td id="t3" onclick="get(3);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')">3</td>
+    <td onclick="get('+');changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">+</td>
+  </tr>
+  <tr>
+    <td id="t4" onclick="get(4);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">4</td>
+    <td id="t5" onclick="get(5);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">5</td>
+    <td id="t6" onclick="get(6);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">6</td>
+    <td onclick="get('-');changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">-</td>
+  </tr>
+  <tr>
+    <td id="t7" onclick="get(7);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">7</td>
+    <td id="t8" onclick="get(8);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">8</td>
+    <td id="t9" onclick="get(9);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">9</td>
+    <td onclick="get('x');changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">x</td>
+  </tr>
+  <tr>
+    <td id="tAC" onclick="get('AC');changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">AC</td>
+    <td id="t0" onclick="get(0);changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">0</td>
+    <td id="tComma" onclick="get('.');changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">.</td>
+    <td onclick="get('/');changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">/</td>
+  </tr>
+  <tr>
+    <td colspan="4" onclick="get('=');changeColor(this)" onmouseover="changeBColor(this,'#eaeae1')" onmouseout="changeBColor(this,'white')"">=</td>
+
+  </tr>
+</table>
+
+
+<script>
+let risultato = 0;
+let display = document.getElementById("display");
+let op1, op2, operazione;
+
+function changeColor(obj){
+	obj.style.color = "#3399ff";
+	setTimeout(function() {
+	obj.style.color = "black";
+	}, 500);
+}
+
+function changeBColor(obj, col){
+	obj.style.background = col;
+}
+
+function get(valore) {
+  console.log(valore);
+  if (valore != 'AC'){
+	//valore non numerico
+	if(isNaN(valore)){
+		//uguale
+		if(valore === '='){
+			risultato = getResult();
+			reset();
+			op1 = risultato	
+		//virgola			
+		}else if(valore === "."){
+			//primo operando
+			if(!operazione){
+				op1 = op1 + valore;
+				risultato += valore;
+			}
+			//secondo operando
+			else{
+				op2 = op2 + valore;
+				risultato += valore;
+			}
+		}
+		//operazione
+		else{
+			//prima operazione oppure se clicco due volte un'operazione
+			if(!operazione ||  isNaN(risultato[risultato.length-1])){
+				if(operazione)
+					risultato = risultato.slice(0, -1);					
+				risultato += valore;
+				operazione = valore;			
+			}
+			//successive operazioni (senza cliccare sull'uguale)
+			else{
+				risultato = getResult();
+				reset();
+				op1 = risultato	
+				operazione = valore;
+				risultato += valore;
+			}
+		}
+	}
+	//valore numerico
+	else{
+		//primo operando
+		if(!operazione){
+			if(!op1)
+				op1 = valore;
+			else{
+				op1 = op1 + "" + valore;
+				op1 = parseFloat(op1);
+			}
+			
+			if(risultato === 0)
+				risultato = valore;
+			else
+				risultato = risultato + "" +  valore;
+		//secondo operando
+		}else{
+			if(!op2)
+				op2 = valore;
+			else{
+				op2 = op2 + "" + valore;
+				op2 = parseFloat(op2);
+			}
+			risultato = risultato + "" +  valore;
+		}
+		
+	}
+}
+  else{
+    risultato = 0;
+	reset();
+	}
+  display.innerHTML = risultato;
+  console.log(risultato);
+}
+
+function reset(){
+	op1 = undefined;
+	op2 = undefined;
+	operazione = undefined;
+}
+
+function getResult(){
+	//console.log("op1 " + op1);
+	//console.log("op2 " + op2);
+	
+	switch(operazione) {
+		 case '+': return op1 + op2;
+		 case '-': return op1 - op2;
+		 case 'x': return op1 * op2;
+		 case '/': return op1 / op2;
+	}
+}
+
+/*function getEl(element) {
+  console.log(element.innerHTML);
+  element.style.color = "red";
+  element.style.color = "black";
+}*/
+
+
+</script>
+
+</body>
+</html>

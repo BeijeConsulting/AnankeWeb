@@ -1,0 +1,170 @@
+<html>
+<head>
+<style>
+body {
+	margin: 0 0 0 0;
+}
+.quadro {
+	background-color: #FF0000;
+	position: absolute;
+}
+</style>
+</head>
+<body onkeydown="getKeyCod()">
+	
+		<div id="snake" style="visibility:hidden">
+			<div id="quadro" class="quadro"></div>
+			<div id="quadro2" class="quadro"></div>
+			<div id="quadro3" class="quadro"></div>
+		</div>
+		<button id="start" onclick="visibility()">Start</button>
+<script>
+const mov = 5;
+
+let quadro = document.getElementsByClassName("quadro");
+console.log(quadro);
+//let random = Math.floor(Math.random() *  document.body.style.height);
+
+//JSON JavaScript Object Notation
+let props = {
+			  width: 20,
+			  height: 20
+			}
+			
+let dir = "right";
+
+function changeProps() {
+	let distance = 0;
+	let snakeWidth = 0;
+	for(let i=quadro.length-1; i>=0; i--){
+		quadro[i].style.width = props.width + "px";
+		quadro[i].style.height = props.height + "px";
+		quadro[i].style.left = distance + "px";
+		quadro[i].distance = distance;
+		snakeWidth += props.width;
+		distance += 20;
+	}
+	snake.style.width = snakeWidth;
+	snake.style.height = props.height;
+}
+
+changeProps(quadro);
+
+let leftDistance = 1;
+let topDistance = 1;
+
+function move(){
+	//movimento verso destra
+	if(dir === "right"){		
+		//fino a quando arriva in fondo allo schermo
+		if(quadro[0].offsetLeft < window.innerWidth - props.width){
+			leftDistance += mov;
+			//aumento la distanza per ogni quadratino
+			for(let i=0; i<quadro.length; i++){
+			quadro[i].style.left = quadro[i].distance + leftDistance + "px"
+			}	
+		//se tocca il bordo dello schermo stop, perdi
+		}else{
+			 clearInterval(loop);
+			 alert("You lost!");
+		}
+	}
+	
+	if(dir === "down"){
+		if(quadro[0].offsetTop < window.innerHeight - props.width){
+			//posizione in cui il serpente gira
+			let pos = quadro[0].style.left;
+			let allineati = true;
+			let qNonAllineato;
+			for(let i=0; i<quadro.length; i++){
+				//se il quadrato non ha ancora raggiunto la posizione in cui deve girare, lo sposto a destra
+				if(quadro[i].style.left < pos){
+					allineati = false;
+					qNonAllineato = i;
+					break;
+				}
+			}
+			topDistance += mov;
+			if(allineati){				
+				for(let i=0; i<quadro.length; i++){					
+					quadro[i].style.top = quadro[i].distance + topDistance + "px";
+				}
+			}else{
+			leftDistance += mov;
+				for(let i=qNonAllineato; i<quadro.length; i++){
+					quadro[i].style.left = quadro[i].distance + leftDistance + "px";
+				}
+				for(let i=0; i<qNonAllineato; i++){
+					//quadro[i].style.top = quadro[i].distance + topDistance + "px";
+					quadro[i].style.top = topDistance + "px";
+				}				
+			}
+			//se tocca il bordo dello schermo stop, perdi
+		}else{
+			 clearInterval(loop);
+			 alert("You lost!");
+		}
+	}
+	
+	/*if(dir === "left"){
+		if(quadro[0].offsetLeft < window.innerWidth - snake.offsetWidth){
+			leftDistance -= mov;
+			//aumento la distanza per ogni quadratino
+			for(let i=0, j=quadro.length-1; i<quadro.length; i++, j--){
+			quadro[i].style.top =  quadro[j].distance + topDistance + quadro[i].distance + "px"
+			quadro[i].style.left = leftDistance + quadro[j].distance + "px"			
+			}
+		//se tocca il bordo dello schermo stop, perdi
+		}else{
+			 clearInterval(loop);
+			 alert("You lost!");
+		}
+	}*/
+		
+}
+
+let loop;
+
+function visibility(){
+	/*for(let i=0; i<quadro.length; i++){
+		quadro[i].style.visibility = "visible";
+	}*/
+	snake.style.visibility = "visible";
+	document.getElementById("start").style.visibility = "hidden";
+	
+	loop = setInterval(move,200);
+}
+
+
+//TO DO: controlli non posso cliccare giu e poi su e viceversa o dx e sx e vice
+function getKeyCod() {
+	let key = window.event.keyCode;
+	console.log('key :', key);
+
+	//destra
+	if (key == 39) {
+		if(dir !== "right"){
+			dir = "right";			
+		}
+	//sinistra
+	} else if (key == 37) {
+		if(dir !== "left"){
+			dir = "left";			
+		}
+	//su
+	} else if (key == 38) {
+		if(dir !== "up"){
+			dir = "up";			
+		}
+	//giù
+	} else if (key == 40) {
+		if(dir !== "down"){
+			dir = "down";			
+		}
+	}
+}
+
+</script>
+
+</body>
+</html>
