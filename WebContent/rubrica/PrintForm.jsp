@@ -1,4 +1,4 @@
-<%@page import="it.beije.ananke.rubrica.rubricajpa.jpamanager.JPAManager"%>
+<%@page import="it.beije.ananke.jpamanager.JPAManager"%>
 <%@page import="it.beije.ananke.rubrica.Contact"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

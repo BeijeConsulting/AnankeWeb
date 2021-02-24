@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+.external {
+        margin: auto;
+        position: relative;
+        border : 2px solid #175c97;
+        border-radius: 8px;
+        width :fit-content;
+        background-color: rgb(74, 136, 228);
+        }
+.content {
+        margin-left: 2px;
+        text-align: center;
+        }
+.tasto {
+        background-color: #fdfdfd ;
+        color: #175c97;
+        font-size: 15pt;
+        border: 2px solid #175c97;
+        border-radius: 8px;
+        margin: 4px 2px;
+        height: 40px;
+        width: 46px;
+        }
+.display {
+        background: white;
+        color: #175c97;
+        font-size: 24pt;
+        border: #175c97 solid 2px;
+        border-radius: 8px;
+        margin: 4px 2px;
+        width: 204px;
+        height: 40px;            
+        }

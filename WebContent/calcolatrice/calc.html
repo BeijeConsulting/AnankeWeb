@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="calcolatrice.css"></link>
+    </head>
+    <body>
+        <div class="external">
+            <h1 style="margin:10px">Casio</h1>
+            <div class="content">
+                <input type="text" name="display" id="operazioni" readonly="readonly" class="display">
+            </div>
+            <div class="content">
+                <div class="content">
+                    <input type="submit" id="tAC" value="AC" onclick="ac()" class="tasto">
+                    <input type="submit" id="tCanc" value="<X" onclick="canc()" class="tasto">
+                    <input type="submit" id="tMod" value="%" onclick="get(this)" class="tasto">
+                    <input type="submit" id="/" value="/" onclick="get(this)" class="tasto">
+                </div>
+                <div class="content">
+                    <input type="submit" id="t7" value="7" onclick="get(this)" class="tasto">
+                    <input type="submit" id="t8" value="8" onclick="get(this)" class="tasto">
+                    <input type="submit" id="t9" value="9" onclick="get(this)" class="tasto">
+                    <input type="submit" id="*" value="*" onclick="get(this)" class="tasto">
+                </div>
+                <div class="content">
+                    <input type="submit" id="t4" value="4" onclick="get(this)" class="tasto">
+                    <input type="submit" id="t5" value="5" onclick="get(this)" class="tasto">
+                    <input type="submit" id="t6" value="6" onclick="get(this)" class="tasto">
+                    <input type="submit" id="-" value="-" onclick="get(this)" class="tasto">
+                </div>
+                <div class="content">
+                    <input type="submit" id="t1" value="1" onclick="get(this)" class="tasto">
+                    <input type="submit" id="t2" value="2" onclick="get(this)" class="tasto">
+                    <input type="submit" id="t3" value="3" onclick="get(this)" class="tasto">
+                    <input type="submit" id="+" value="+" onclick="get(this)" class="tasto">
+                </div>
+                <div class="content">
+                    <input type="submit" value="Ans" onclick="ans()" class="tasto">
+                    <input type="submit" id="0" value="0" onclick="get(this)" class="tasto">
+                    <input type="submit" id="." value="." onclick="get(this)" class="tasto">
+                    <input type="submit" id="=" value="=" onclick="result()" class="tasto">
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="calcolatrice.js"></script>
+</html>

@@ -1,8 +1,8 @@
 package it.beije.ananke.rubrica.rubricajpa;
 
+import it.beije.ananke.jpamanager.JPAManager;
 import it.beije.ananke.rubrica.Contact;
 import it.beije.ananke.rubrica.rubricajpa.csvmanager.CSVManager;
-import it.beije.ananke.rubrica.rubricajpa.jpamanager.JPAManager;
 import it.beije.ananke.rubrica.rubricajpa.xmlmanager.XMLManager;
 
 import org.xml.sax.SAXException;

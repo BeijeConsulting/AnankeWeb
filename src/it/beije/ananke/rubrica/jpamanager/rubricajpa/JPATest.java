@@ -1,4 +1,4 @@
-package it.beije.ananke.rubrica.rubricajpa.jpamanager;
+package it.beije.ananke.rubrica.jpamanager.rubricajpa;
 
 import it.beije.ananke.rubrica.Contact;
 

@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.beije.ananke.jpamanager.JPAManager;
 import it.beije.ananke.rubrica.Contact;
 import it.beije.ananke.rubrica.rubricajpa.Rubrica;
-import it.beije.ananke.rubrica.rubricajpa.jpamanager.JPAManager;
 
 @WebServlet("/servlet")
 public class InsertServlet extends HttpServlet {
