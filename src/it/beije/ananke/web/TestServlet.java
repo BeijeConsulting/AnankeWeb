@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.Session;
-
 /**
  * Servlet implementation class TestServlet
  */
@@ -47,7 +45,7 @@ public class TestServlet extends HttpServlet {
 //				+ "NOME : " + nome + "</p>"
 //				+ "</body></html>";
 //		response.getWriter().append(html);
-
+String nome=null, cognome = null;
 		HttpSession session = request.getSession();
 		session.setAttribute("cognome", cognome);
 		session.setAttribute("nome", nome);
