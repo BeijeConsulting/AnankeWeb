@@ -41,7 +41,24 @@ public class UpdateContServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-			String field = request.getParameter("fields");
+			Contatto contatto = new Contatto();
+			
+			contatto.setName(request.getParameter("name"));
+			contatto.setSurname(request.getParameter("surname"));
+			contatto.setTelephone(request.getParameter("telephone"));
+			contatto.setEmail(request.getParameter("email"));
+			
+			if(JPAmanager.modificaContatto(contatto))
+			{
+				response.sendRedirect("visualizzaRubrica.jsp");
+			}
+			else
+			{
+				response.getWriter().append("<html><head><title>Modifica fallita</title>" + 
+						"</head><body><h1>Modifica non riuscita</h1>"
+						+ "</body></html>");
+			}
+			
 			
 		}
 	}

@@ -89,29 +89,40 @@ public class JPAmanager {
 		
 
 	}
-//	public static boolean modificaContatto(Contatto contatto) {
-//
-//			EntityManager entityManager = RubricaEntityManager.getEntityManager();
-//			EntityTransaction entityTransaction = entityManager.getTransaction();
-//			
-//			List<Contatto> contatti = cercaContatto(contatto);
-//			
-//			if(cont!=null)
-//			{
-//				entityTransaction.begin();
-//				cont.setName(contatto.getName());
-//				cont.setSurname(contatto.getSurname());
-//				cont.setTelephone(contatto.getTelephone());
-//				cont.setEmail(contatto.getEmail());
-//				
-//				entityManager.persist(cont);
-//				entityTransaction.commit();
-//				entityManager.close();
-//				return true;
-//			}
-//
-//			else return false;
-//	}
+	public static boolean modificaContatto(Contatto contatto) {
+
+			EntityManager entityManager = RubricaEntityManager.getEntityManager();
+			EntityTransaction entityTransaction = entityManager.getTransaction();
+			
+			Contatto cont = entityManager.find(Contatto.class, contatto.getId());
+			
+			if(cont!=null)
+			{
+				entityTransaction.begin();
+				if(!contatto.getName().equals(""))cont.setName(contatto.getName());
+				if(!contatto.getSurname().equals(""))cont.setSurname(contatto.getSurname());
+				if(!contatto.getTelephone().equals(""))cont.setTelephone(contatto.getTelephone());
+				if(!contatto.getEmail().equals(""))cont.setEmail(contatto.getEmail());
+				
+				entityManager.persist(cont);
+				entityTransaction.commit();
+				entityManager.close();
+				return true;
+			}
+
+			else return false;
+	}
+	
+	public static Contatto findContatto(int id)
+	{
+		EntityManager entityManager = RubricaEntityManager.getEntityManager();
+		
+		Contatto cont = entityManager.find(Contatto.class,id);
+		
+		entityManager.close();
+		
+		return cont;
+	}
 //
 //	public static boolean eliminaContatto(Contatto contatto) {
 //

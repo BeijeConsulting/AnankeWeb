@@ -24,9 +24,8 @@ table, th, td {
 	<tr>
 		<th>ID</th>
 		<th>Nome</th>
-		<th>Cognome</th>
-		<th>Telefono</th>
-		<th>Email</th>
+		<th>Descrizione</th>
+		<th>Prezzo</th>
 	</tr>
 	<%for(Contatto cont : trovati){%>
 	<tr>

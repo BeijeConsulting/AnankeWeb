@@ -35,7 +35,10 @@ table, th, td {
 	<td><%=cont.getSurname()%></td>
 	<td><%=cont.getTelephone() %></td>
 	<td><%=cont.getEmail() %></td>
-	</tr><%} %>
+	<td><a href="modifica_contatto.jsp?id=<%=cont.getId()%>">Modifica</a></td>
+	<td><a href="elimina_contatto.jsp?id=<%=cont.getId()%>">Elimina</a></td>
+	</tr>
+	<%}%>
 </table><br>
 
 
