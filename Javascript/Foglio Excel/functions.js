@@ -1,8 +1,9 @@
 
 var container = document.getElementById('containerTable');
-var button = document.getElementById('buttonClick');
-var buttonSubmit = document.getElementById('buttonSubmit');
+
+
 createTable();
+initFocus();
 
 function createTable(){
     
@@ -24,19 +25,21 @@ function createTable(){
 }
 container.appendChild(row);
 console.log(row);
+}
+var input = document.getElementById('1x1').focus();
+}
 
-}
+let a=1;
+let b=1;
+function initFocus(){
+    document.getElementById(a + "x" + b).focus();
 }
 
-function getTable(){
-if(container.style.visibility == 'hidden'){
-    container.style.visibility = 'visible';
-    buttonSubmit.style.visibility = 'visible';
-    button.innerHTML= "Chiudi Tabella";
+function moveInput(event){
+    var x = event.keyCode;
+    console.log(x);
+    if(x === '37'){
+        getElementById("")
+    }
+}
 
-}else{
-    container.style.visibility = 'hidden';
-    buttonSubmit.style.visibility = 'hidden';
-    button.innerHTML= "Apri Tabella";
-}
-}
