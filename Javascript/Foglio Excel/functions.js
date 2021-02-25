@@ -1,8 +1,9 @@
 
 
 var container = document.getElementById('containerTable');
-let a=1;
-let b=1;
+var a=1;
+var b=1;
+
 
 createTable();
 initFocus();
@@ -16,11 +17,15 @@ function createTable(){
         for(i=1;i<=30;i++){
     var div = document.createElement("div");
     div.setAttribute("id","container"+j +"x"+ i);
+   
+    
     var cell = document.createElement("input");
     cell.setAttribute("type","text");
     cell.setAttribute("id",j +"x"+ i);
     cell.setAttribute("name",j +"x"+ i);
     cell.setAttribute("placeholder",j +"x"+ i);
+    cell.setAttribute("onclick","getID("+j +"," +i+")");
+    
     div.appendChild(cell);
     
     row.appendChild(div)
@@ -37,6 +42,7 @@ function initFocus(){
 }
 
 function moveInput(event){
+    
     var x = event.keyCode;
     console.log(x);
     if(x === 37){
@@ -52,7 +58,7 @@ function moveInput(event){
     } else if(x === 38 && a != 1){
         a--;
         
-    } else if( x === 39){
+    } else if( x === 39 || x === 13){
         if(b === 30){
             if(a != 5){
                 a++;
@@ -65,8 +71,22 @@ function moveInput(event){
         if(a != 5){
             a++;
         }
-    }
+    } 
     document.getElementById(a + "x" +b).focus();
+}
+
+function getID(j,i){
+    a=j;
+    b=i;
+    document.getElementById(a + "x" +b).focus();
+}
+
+function validation(event){
+    var enter = event.keyCode;
+    if(enter === 13){
+        event.preventDefault();
+        return false;
+    }
 }
 
 
