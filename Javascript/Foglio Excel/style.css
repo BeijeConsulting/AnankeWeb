@@ -6,7 +6,7 @@
     
 }
 #containerTable{
-    visibility: collapse;
+  
     width: 100%;
     height: auto;
   position: relative;
@@ -33,6 +33,6 @@
 position: relative;
 margin-top: 1em;
 margin: auto;
-visibility: hidden;
+
 
 }

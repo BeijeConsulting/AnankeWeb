@@ -1,7 +1,6 @@
 
 var container = document.getElementById('containerTable');
-var button = document.getElementById('buttonClick');
-var buttonSubmit = document.getElementById('buttonSubmit');
+
 createTable();
 
 function createTable(){
@@ -15,6 +14,7 @@ function createTable(){
     div.setAttribute("id","container"+j +""+ i);
     var cell = document.createElement("input");
     cell.setAttribute("type","text");
+    cell.setAttribute("id",j +""+ i);
     cell.setAttribute("name",j +""+ i);
     cell.setAttribute("placeholder",j +""+ i);
     div.appendChild(cell);
@@ -27,15 +27,3 @@ console.log(row);
 }
 }
 
-function getTable(){
-if(container.style.visibility === 'collapse'){
-    container.style.visibility = 'visible';
-    buttonSubmit.style.visibility = 'visible';
-    button.innerHTML= "Chiudi Tabella";
-
-}else{
-    container.style.visibility = 'collapse';
-    buttonSubmit.style.visibility = 'collapse';
-    button.innerHTML= "Apri Tabella";
-}
-}
