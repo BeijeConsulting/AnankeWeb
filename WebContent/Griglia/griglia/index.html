@@ -7,29 +7,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Griglia</title>
 </head>
-<body>
+<body onkeydown="movimento()">
     <div id="conteiner">
-<h1>Griglia 5x30</h1>
+<h1 id="titolo">Griglia</h1>
         <div id="griglia">
             <form>
             <script> 
             let griglia= document.getElementById("griglia");
-            const righe=5;
-            const colonne=30;
+            let righe=5;
+            let colonne=30;
+        
+             function generatabella(){
+
+                document.getElementById("titolo").innerHTML="Griglia "+righe+"x"+colonne;
+                
             for(let i=0;i<righe;i++){
                 console.log("primo cilco"+i);
                 griglia.innerHTML=griglia.innerHTML+"   <div class=\"row\">";
             for(let j=0;j<colonne;j++){
-                griglia.innerHTML=griglia.innerHTML+"   <div id=\"row"+i+"col"+j+"\" class=\"column\"> <input type=\"text\" name=\"inputrow"+i+"col"+j+"\" id=\"inputrow"+i+"col"+j+"\"> </div> ";
+                griglia.innerHTML=griglia.innerHTML+"   <div id=\"row"+i+"col"+j+"\" class=\"column\"> <input onclick=\"changeposition("+i+","+j+")\" type=\"text\" name=\"inputrow"+i+"col"+j+"\" id=\"inputrow"+i+"col"+j+"\"> </div> ";
                 console.log(i);
             }
-            griglia.innerHTML=griglia.innerHTML+"</div> ";
+            griglia.innerHTML=griglia.innerHTML+"</div>  ";
+
+             }
+
 
             }
-
+            generatabella();
             </script>
 </form>
     </div>
+    <br>
+    <br>
+<div id="selezionatore">
+<input type="number" name="righe"  max="31"min="0"  id="righe"> X
+<input type="number" name="colonne"  max="31"min="0" id="colonne">
+<button type="button" onclick="changetable()">Clicca qui per cambiare la griglia</button>
+</div>
+
     </div>
+    <script>
+function selectedFocus (col, row){
+let elemento= document.getElementById("inputrow"+row+"col"+col+"").focus();
+}
+ 
+let posizionex=0;
+let posizioney=0;
+function changeposition(i,j){
+ posizionex=j;
+ posizioney=i;
+}
+function changetable(){
+    righe= document.getElementById("righe").value;
+
+     colonne=document.getElementById("colonne").value;
+     griglia.innerHTML=griglia.innerHTML="";
+    generatabella();
+}
+selectedFocus(posizionex,posizioney);
+ function movimento(){
+    let key = window.event.keyCode;
+if(key==37){
+if(posizionex==0)
+posizionex=29;
+else
+posizionex-=1;
+selectedFocus(posizionex,posizioney);
+}
+
+
+if(key==38){
+if(posizioney==0)
+posizioney=4;
+else
+posizioney-=1;
+selectedFocus(posizionex,posizioney);
+
+}
+
+if(key==39){
+if(posizionex==colonne-1)
+posizionex=0;
+else
+posizionex+=1;
+selectedFocus(posizionex,posizioney);
+}
+
+
+if(key==40){
+if(posizioney==righe-1)
+posizioney=0;
+else
+posizioney+=1;
+selectedFocus(posizionex,posizioney);
+}
+
+
+if(key==13){
+
+if(posizionex==29){
+if(posizioney==4){
+posizioney=0;
+posizionex=0;
+}else{
+ posizioney+=1;
+posizionex=0;
+}}
+else
+posizionex+=1;
+
+selectedFocus(posizionex,posizioney);
+}
+
+
+ }
+
+
+
+    </script>
 </body>
 </html>

@@ -15,11 +15,7 @@ input{
     width: 30px;
 }
 #griglia{
- box-sizing: border-box;
- width: 1390px;
- min-width: 1390px;
-   height: 166px; 
-
+    box-sizing: content-box;
    display: inline-block;
 
     }
@@ -27,7 +23,9 @@ input{
     float: left;
     clear: right;
     height: 22px;
-    width: 40px;
     padding: 2px;
     border: 0.5px solid rgba(85, 85, 85, 0.446);
     }
+.row{  
+    display: revert;
+}
