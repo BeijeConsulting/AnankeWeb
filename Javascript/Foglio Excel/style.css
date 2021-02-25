@@ -1,0 +1,38 @@
+.container{
+    
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    
+    
+}
+#containerTable{
+    visibility: collapse;
+    width: 100%;
+    height: auto;
+  position: relative;
+  margin: 2px auto;
+  text-align: left;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align:middle;
+ 
+}
+
+
+.row div  {
+    display: inline-block;
+   
+
+}
+.row div input{
+    width: 3em;
+    height: 2em;
+}
+#buttonSubmit{
+position: relative;
+margin-top: 1em;
+margin: auto;
+visibility: hidden;
+
+}
