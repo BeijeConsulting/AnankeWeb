@@ -1,0 +1,167 @@
+<!--Persico & Khaira-->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Griglia</title>
+</head>
+<body onkeydown="getKeyCod()" onload="setFocus('inputRow0col0')">
+  <div id="conteiner">
+    <h1>Griglia</h1>
+	<form>
+      <div id="griglia"/>
+    </form>
+    <script>
+      let griglia= document.getElementById("griglia");
+
+      const righe=5;
+      const colonne=30;
+      for(i=0;i<righe;i++){
+        console.log("primo ciclo"+i);
+        griglia.innerHTML=griglia.innerHTML+"   <div class=\"row\">";
+
+        for(j=0;j<colonne;j++){
+          griglia.innerHTML=griglia.innerHTML+"   <div id=\"row"+i+"col"+j+"\" class=\"column\"> <input onclick = setFocus(\"inputRow"+i+"col"+j+"\") type=\"text\" name=\"inputRow"+i+"col"+j+"\" id=\"inputRow"+i+"col"+j+"\"> </div> ";
+          console.log(i);
+        }
+
+        griglia.innerHTML=griglia.innerHTML+"</div> ";
+      }
+
+      let id;
+      let casella;
+      let riga;
+      let colonna;
+
+      let col;
+      let row;
+
+      function getKeyCod() {
+      	let key = window.event.keyCode;
+      	console.log('key :', key);
+
+      	if (key == 39) {
+
+          col = eval(colonna) + 1;
+          console.log("col " + col);
+
+          id = "inputRow" + riga + "col" + col ;
+          console.log("id nuovo: " + id);
+
+          setFocus(id);
+
+      	} else if (key == 37) {
+
+          col = eval(colonna) - 1;
+          console.log("col " + col);
+
+          id = "inputRow" + riga + "col" + col ;
+          console.log("id nuovo: " + id);
+
+          setFocus(id);
+
+      	} else if (key == 38) {
+
+          row = eval(riga) - 1;
+          console.log("row " + row);
+
+          id = "inputRow" + row + "col" + colonna ;
+          console.log("id nuovo: " + id);
+
+          setFocus(id);
+
+      	} else if (key == 40) {
+
+          row = eval(riga) + 1;
+          console.log("row " + row);
+
+          id = "inputRow" + row + "col" + colonna ;
+          console.log("id nuovo: " + id);
+
+          setFocus(id);
+
+        } else if (key == 13) {
+
+          col = eval(colonna);
+          row = eval(riga);
+
+          if (col === 29 && row == 4) {
+
+            row = eval(riga) + 1;
+            console.log("row " + row);
+
+            id = "inputRow" + 0 + "col" + 0;
+            console.log("id nuovo: " + id);
+
+            setFocus(id);
+
+          }
+          else if (col == 29) {
+
+            row = eval(riga) + 1;
+            console.log("row " + row);
+
+            id = "inputRow" + row + "col" + 0;
+            console.log("id nuovo: " + id);
+
+            setFocus(id);
+
+          }
+           else {
+
+            col = eval(colonna) + 1;
+            console.log("col " + col);
+
+            id = "inputRow" + riga + "col" + col ;
+            console.log("id nuovo: " + id);
+
+            setFocus(id);
+
+          }
+
+        }
+		
+		 else if (key == 8) {
+
+          col = eval(colonna);
+          row = eval(riga);
+
+           col = eval(colonna) -1;
+           console.log("col " + col);
+
+           id = "inputRow" + riga + "col" + col ;
+           console.log("id nuovo: " + id);
+
+           setFocus(id);
+          
+
+        }
+    }
+
+      function setFocus(id) {
+        document.getElementById(id).focus();
+        casella = id;
+
+        let inizioI = id.indexOf("w");
+        console.log("inizio i " + inizioI);
+
+        let fineI = id.indexOf("c");
+        console.log("fine i " + fineI);
+
+        riga = id.substring(inizioI + 1, fineI);
+        console.log("riga " + riga);
+
+        let inizioJ = id.indexOf("l");
+        console.log("inizio j " + inizioJ);
+
+        colonna = id.substring(inizioJ + 1);
+        console.log("colonna " + colonna);
+      }
+
+    </script>
+  </div>
+</body>
+</html>
