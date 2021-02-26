@@ -79,7 +79,7 @@ selectedFocus(posizionex,posizioney);
 
 if(key==38){
 if(posizioney==0)
-posizioney=4;
+posizioney=righe-1;
 else
 posizioney-=1;
 selectedFocus(posizionex,posizioney);
@@ -106,8 +106,8 @@ selectedFocus(posizionex,posizioney);
 
 if(key==13){
 
-if(posizionex==29){
-if(posizioney==4){
+if(posizionex==colonne-1){
+if(posizioney==righe-1){
 posizioney=0;
 posizionex=0;
 }else{
