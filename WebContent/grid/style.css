@@ -10,14 +10,22 @@ body{
 margin: 0;
 padding: 0;
 
+
 }
 input{
     width: 30px;
+    
 }
+
+input:focus {
+  background-color: rgb(126, 251, 255);
+  transition: ease-in-out, background-color .35s ease-in-out;
+}
+
 #griglia{
  box-sizing: border-box;
- width: 1390px;
- min-width: 1390px;
+ width: 1360px;
+ margin: auto;
    height: 166px; 
 
    display: inline-block;
@@ -27,7 +35,9 @@ input{
     float: left;
     clear: right;
     height: 22px;
-    width: 40px;
+    width: 3,33%;
     padding: 2px;
     border: 0.5px solid rgba(85, 85, 85, 0.446);
     }
+
+  
