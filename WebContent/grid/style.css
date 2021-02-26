@@ -1,3 +1,4 @@
+/* Persico Kahira */
 #conteiner{
 margin: 0;
 padding: 0;
@@ -14,11 +15,15 @@ padding: 0;
 input{
     width: 30px;
 }
+input:focus {
+  color: red;
+  background-color: red;
+}
 #griglia{
  box-sizing: border-box;
  width: 1390px;
  min-width: 1390px;
-   height: 166px; 
+   height: 166px;
 
    display: inline-block;
 
@@ -31,3 +36,4 @@ input{
     padding: 2px;
     border: 0.5px solid rgba(85, 85, 85, 0.446);
     }
+
