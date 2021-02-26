@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- by Imperatore & Savallo -->
+<html lang="it">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Griglia</title>
+  </head>
+  <body onkeydown="setFocus()">
+    <div id="conteiner">
+      <h1>Griglia 5x30</h1>
+      <form>
+        <div id="griglia"/>
+      </form>
+        <script>
+          let griglia= document.getElementById("griglia");
+          const righe=5;
+          const colonne=30;
+          for(i=0;i<righe;i++){
+            console.log("primo ciclo"+i);
+            griglia.innerHTML=griglia.innerHTML+"   <div class=\"row\">";
+            for(j=0;j<colonne;j++){
+              griglia.innerHTML=griglia.innerHTML+"   <div id=\"row"+i+"col"+j+"\" class=\"column\"> <input type=\"text\" name=\"inputRow"+i+"col"+j+"\" id=\"inputRow"+i+"col"+j+"\"> </div> ";
+              console.log(i);
+            }
+            griglia.innerHTML=griglia.innerHTML+"</div> ";
+          }
+        </script>
+    </div>
+    <script>
+      let rowId = 1;
+      let columnId = 1;
+      let firstSeparator = 'input'
+      let rowSeparator = 'Row';
+      let columnSeparator = 'col';
+      let selectedCell;
+      let id = '';
+
+      function getId() {
+          selectedCell = document.activeElement.getAttribute('id');
+          rowId = selectedCell.substring(selectedCell.indexOf('w')+1,selectedCell.indexOf('c'));
+          columnId = selectedCell.substring(selectedCell.indexOf('l')+1);
+          
+          console.log(selectedCell);
+          console.log('rowId:', rowId);
+          console.log('columnId:', columnId);
+          let key = window.event.keyCode;
+          console.log('key :', key);
+          if (key == 39) {
+            columnId++;
+            if(columnId >= colonne) {
+                columnId--;
+                console.log(columnId);
+            }
+          } else if (key == 37) {
+            columnId--;
+            if(columnId < 0) {
+                columnId++;
+            }
+          } else if (key == 38) {
+            rowId--;
+            if(rowId < 0) {
+                rowId++
+            }
+          } else if (key == 40) {
+            rowId++;
+            if(rowId >= righe) {
+                rowId--;
+            }
+          } else if (key == 13) {
+            columnId++;
+            if (columnId > colonne-1) {
+              columnId = 0;
+              rowId++;
+              console.log('column id using enter',columnId);
+              console.log('row id using enter',rowId);
+              if (rowId > righe-1) {
+                rowId = 0;
+                columnId = 0;
+                console.log('column id using enter secondo if',columnId);
+                console.log('row id using enter secondo if',rowId);
+              }
+            }
+          }
+          console.log('column id',columnId);
+          console.log('row id',rowId);
+          id = firstSeparator + rowSeparator + rowId + columnSeparator + columnId;
+          return id;
+          
+      }
+      function setFocus() {
+          document.getElementById(getId()).focus();
+          console.log('actualCell:',document.activeElement.getAttribute('id')); 
+      }
+      window.onload = function() {
+        document.getElementById('inputRow0col0').focus();
+      };
+    </script>
+  </body>
+</html>
