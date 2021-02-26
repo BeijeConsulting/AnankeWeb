@@ -21,6 +21,8 @@
 
 
 .row div  {
+    margin-bottom: 0;
+    padding: 0;
     display: inline-block;
    
 
@@ -28,11 +30,26 @@
 .row div input{
     width: 3em;
     height: 2em;
+    font-size: 0.77em;
+    border: 0.165em solid red;
+    border-radius: 50%;
+    text-align: center;
+    outline:none;
+}
+
+.row div input:focus{
+    
+    border: 0.165em solid yellow ;
+    
 }
 #buttonSubmit{
+    
+    background-color: yellow;
+    border: 0.165em solid red;
+    border-radius: 25%;
+width: auto;
+font-size: 1em;
 position: relative;
 margin-top: 1em;
 margin: auto;
-
-
 }

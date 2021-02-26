@@ -29,7 +29,7 @@ function moveInput(event){
           } 
        }
         
-    } else if(x === 38 && a != 1){
+    } else if(x === 38 && a != 0){
         a--;
         
     } else if( x === 39 || x === 13){
