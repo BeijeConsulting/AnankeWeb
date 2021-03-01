@@ -89,4 +89,40 @@ function validation(event){
     }
 }
 
+let form = document.getElementById('tabella');
+function sendForm(){
+    
+    form.submit();
+    
+    return true;
+}
+
+
+function createCsv(){
+    sendForm();
+    var csv= new Array(5);
+    for(i=1;i<=5;i++){
+    for(j=1;j<=30;j++){
+        let value= document.getElementById(i + "x" +j).value;
+        
+        console.log(value);
+        if(!value){
+            value="";
+        }
+        csv[i-1] += value + ",";
+    }
+}
+let csvContent = "data:text/csv;charset=utf-8,";
+for(j=0;j<5;j++){
+    csvContent += csv[j] + "\n";
+}
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "excel.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click();
+}
+
 

@@ -43,7 +43,7 @@
     
 }
 #buttonSubmit{
-    
+    outline:none;
     background-color: yellow;
     border: 0.165em solid red;
     border-radius: 25%;
